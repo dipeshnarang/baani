@@ -24,7 +24,7 @@ let theme = createTheme({
     fontFamily: "DM Sans, sans-serif",
 
     h1: {
-      fontSize: "3.5rem",
+      fontSize: "3.25rem",
       fontWeight: 500,
       lineHeight: 1.2,
       "@media (min-width:600px)": {

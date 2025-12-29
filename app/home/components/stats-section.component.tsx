@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Box, Typography } from "@mui/material";
-import { STATS_SECTION } from "@/app/home/constants/home-carousel.constant";
+import { STATS_SECTION } from "@/home/constants/home-carousel.constant";
 
 const COUNT_DURATION = 2000; // ms
 
@@ -13,7 +13,6 @@ export default function StatsSection() {
     STATS_SECTION.stats.map(() => 0)
   );
 
-  /* ---------- Intersection Observer ---------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -26,7 +25,6 @@ export default function StatsSection() {
     return () => observer.disconnect();
   }, []);
 
-  /* ---------- Count-up Animation ---------- */
   useEffect(() => {
     if (!visible) return;
 
@@ -77,9 +75,9 @@ export default function StatsSection() {
   return (
     <Box
       ref={sectionRef}
-      className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-8"
+      className="mx-auto max-w-5xl px-6 py-10 flex flex-col gap-8"
     >
-      <Box className="flex flex-col gap-4 items-center">
+      <Box className="flex flex-col gap-4 items-center pt-8">
         <Box className="mb-8 text-center font-serif text-4xl italic leading-tight">
           {renderAnimatedText(STATS_SECTION.header, "h1")}
         </Box>
@@ -89,7 +87,7 @@ export default function StatsSection() {
         </Box>
       </Box>
 
-      <Box className="grid grid-cols-2 gap-x-16 gap-y-20 py-6">
+      <Box className="grid grid-cols-2 gap-x-16 gap-y-20">
         {STATS_SECTION.stats.map((stat, index) => (
           <Box key={index}>
             <Box className="mb-6 h-px w-full bg-gray-200" />

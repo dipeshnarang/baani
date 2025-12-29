@@ -27,3 +27,20 @@ export const STATS_SECTION = {
     { value: 24, label: "Projects" },
   ],
 };
+
+export const EXPLORE_SECTION = {
+  header: "Explore our curated",
+  subHeader: "hotel collection",
+  items: [
+    {
+      image: "/images/baani-city-center.png",
+      title: "Hilton - Baani City Centre",
+      subtitle: "Sector - 63",
+    },
+    {
+      image: "/images/double-tree-hilton.jpg",
+      title: "Double Tree by Hilton",
+      subtitle: "Sector - 50",
+    },
+  ],
+};

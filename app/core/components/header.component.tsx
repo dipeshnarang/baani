@@ -15,8 +15,8 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AppHeader } from "@//app/core/styled/header.styled";
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { AppHeader } from "@/core/styled/header.styled";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 const navItems = [
   { label: "Home", href: "/" },
