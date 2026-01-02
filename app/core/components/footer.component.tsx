@@ -22,19 +22,21 @@ export default function Footer() {
         >
           <Box className="max-w-md">
             <Typography variant="h1" className="italic text-white">
-              {FOOTER_CONTENT.title}
+              {FOOTER_CONTENT.title[0]}
+              <br />
+              <span>{FOOTER_CONTENT.title[1]}</span>
             </Typography>
           </Box>
 
           <Box>
-            <Typography className="mb-4 text-white text-xl font-semibold">
+            <Typography className="text-white flex gap-1 pb-4">
               {FOOTER_CONTENT.quickLinks.header[0]}{" "}
               <span className="text-yellow-500">
                 {FOOTER_CONTENT.quickLinks.header[1]}
               </span>
             </Typography>
 
-            <ul className="space-y-2 text-sm text-gray-300">
+            <ul className="space-y-1 text-sm text-gray-300">
               {FOOTER_CONTENT.quickLinks.items.map((item) => {
                 return <li key={item.label}>{item.label}</li>;
               })}

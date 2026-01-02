@@ -1,5 +1,5 @@
 export const FOOTER_CONTENT = {
-  title: "Real Estate & Beyond",
+  title: ["Real Estate", "& Beyond"],
   quickLinks: {
     header: ["Quick", "Links"],
     items: [
