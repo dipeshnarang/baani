@@ -68,7 +68,7 @@ export default function Header() {
               aria-label="open menu"
               className=""
             >
-              <MenuIcon />
+              <MenuIcon className="text-white" />
             </IconButton>
           )}
           <Box className="mt-4">

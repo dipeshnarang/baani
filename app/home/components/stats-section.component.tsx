@@ -83,7 +83,7 @@ export default function StatsSection() {
         </Box>
 
         <Box className="mx-auto mb-20 max-w-3xl text-center text-sm leading-relaxed">
-          {renderAnimatedText(STATS_SECTION.description, "body1", 600)}
+          {renderAnimatedText(STATS_SECTION.description, "body2", 600)}
         </Box>
       </Box>
 

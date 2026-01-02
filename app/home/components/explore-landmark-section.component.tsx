@@ -1,0 +1,57 @@
+"use client";
+
+import { Box, Typography, Button } from "@mui/material";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import VerticalImageMarquee from "@/core/components/vertical-image-carousel.component";
+import { EXPLORE_LANDMARK } from "../constants/home-carousel.constant";
+import { ExploreButton } from "../styled/home.styled";
+
+export default function IconicLandmarksSection() {
+  return (
+    <Box className="mx-auto px-4 md:px-24 py-10 bg-[#FAFAFA]">
+      {/* Header */}
+      <Box className="mb-14 text-center">
+        <Typography variant="h1" className="font-serif italic text-yellow-500">
+          {EXPLORE_LANDMARK.header[0]}{" "}
+          <span className="text-black">{EXPLORE_LANDMARK.header[1]}</span>
+        </Typography>
+        <Typography variant="h1" className="font-semibold">
+          {EXPLORE_LANDMARK.subheader[0]}
+        </Typography>
+      </Box>
+
+      {/* Content */}
+      <Box className="grid grid-cols-1 gap-12 md:grid-cols-2">
+        {/* Left – Scrolling Images */}
+        <VerticalImageMarquee images={EXPLORE_LANDMARK.imageList} />
+
+        <Box className="md:p-8">
+          <Box className="flex flex-col gap-6 rounded-3xl bg-white p-10 shadow-sm">
+            <Box className="flex flex-col gap-4">
+              <Typography variant="h3" className="mb-2 font-semibold">
+                Experiential Landmarks Crafted
+              </Typography>
+
+              <Typography variant="body2" className="mb-6 text-gray-600">
+                Strategically designed landmarks that drive businesses while
+                also enriching the customer experience.
+              </Typography>
+            </Box>
+            <Box>
+              <ul className="mb-8 space-y-3 text-sm text-gray-700">
+                <li>◆ Premium High Street Retail and Service Apartments</li>
+                <li>◆ Luxurious Architectural Design</li>
+                <li>◆ Timeless landscapes with elegance</li>
+                <li>◆ Blend of Technology and Creativity</li>
+                <li>◆ Impeccable craftsmanship</li>
+              </ul>
+            </Box>
+            <ExploreButton variant="contained" endIcon={<ArrowOutwardIcon />}>
+              Explore commercial portfolio
+            </ExploreButton>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+}

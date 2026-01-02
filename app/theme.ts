@@ -39,7 +39,7 @@ let theme = createTheme({
       },
     },
     h3: {
-      fontSize: "1.4rem",
+      fontSize: "1.8rem",
       fontWeight: 500,
     },
     subtitle1: {
@@ -47,11 +47,16 @@ let theme = createTheme({
       fontWeight: 400,
     },
     body1: {
-      fontSize: "1rem",
-      lineHeight: 1.6,
+      fontSize: "1.25rem",
+      lineHeight: 1.2,
     },
     body2: {
-      fontSize: "0.875rem",
+      fontSize: "1rem",
+    },
+    cardHeader: {
+      fontSize: "2rem",
+      fontWeight: 700,
+      lineHeight: "1.8rem",
     },
 
     button: {

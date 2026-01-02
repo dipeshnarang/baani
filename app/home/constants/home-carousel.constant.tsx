@@ -44,3 +44,37 @@ export const EXPLORE_SECTION = {
     },
   ],
 };
+
+export const LANDMARK_SECTION = {
+  header: ["Building", "signature landmarks"],
+  subheader: ["across urban landscapes"],
+  landmarks: [
+    {
+      image: "/images/retail.png",
+      title: "Retail",
+      description: "Spaces enabling seamless business–customer interaction.",
+    },
+    {
+      image: "/images/office.png",
+      title: "Offices",
+      description: "Environments that ignite productivity and elevate success.",
+    },
+    {
+      image: "/images/hotel.png",
+      title: "Hotels",
+      description:
+        "Properties meticulously crafted to enrich every moment of your stay.",
+    },
+  ],
+};
+
+export const EXPLORE_LANDMARK = {
+  header: ["Elevating the Cityscape", "with"],
+  subheader: ["Iconic Landmarks"],
+  imageList: [
+    "/images/landmark-1.png",
+    "/images/landmark-2.jpg",
+    "/images/landmark-3.jpg",
+  ],
+};
+
