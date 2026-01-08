@@ -75,6 +75,10 @@ let theme = createTheme({
       fontWeight: 400,
       lineHeight: 1.1,
     },
+    imageOverlay: {
+      fontFamily: "DM Sans",
+      fontSize: '3.75rem'
+    }
   },
 
   spacing: (factor: number) => `${0.5 * factor}rem`,

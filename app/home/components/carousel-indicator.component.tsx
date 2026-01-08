@@ -13,14 +13,12 @@ export default function CarouselIndicator({
 }: CarouselIndicatorProps) {
   return (
     <div className="absolute bottom-20 right-30 flex flex-col items-end gap-3 text-white">
-      {/* Index display */}
       <div className="flex items-center gap-4 text-sm tracking-widest">
         <span>{String(currentIndex + 1).padStart(2, "0")}</span>
         <div className="h-px w-20 bg-white/60" />
         <span>{String(total).padStart(2, "0")}</span>
       </div>
 
-      {/* Progress bars */}
       <div className="flex gap-2">
         {Array.from({ length: total }).map((_, index) => (
           <button

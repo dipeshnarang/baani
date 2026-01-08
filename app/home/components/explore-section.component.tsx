@@ -1,13 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ExploreCard from "./explore-card.component";
 import { EXPLORE_SECTION } from "../constants/home-carousel.constant";
 
 export default function ExploreSection() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [hasOverflow, setHasOverflow] = useState(false);
 
@@ -42,7 +50,7 @@ export default function ExploreSection() {
     if (!scrollRef.current) return;
 
     scrollRef.current.scrollBy({
-      left: direction === "left" ? -360 : 360,
+      left: direction === "left" ? -400 : 400,
       behavior: "smooth",
     });
   };
@@ -55,7 +63,7 @@ export default function ExploreSection() {
           {EXPLORE_SECTION.subHeader}
         </Typography>
       </Box>
-      <Box className="relative flex justify-center">
+      <Box className="relative flex ">
         {hasOverflow && (
           <Box className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-2">
             <IconButton
@@ -78,7 +86,7 @@ export default function ExploreSection() {
 
         <Box
           ref={scrollRef}
-          className="flex gap-10 overflow-x-scroll py-2 scroll-smooth scrollbar-hide w-full justify-center"
+          className={`flex gap-10 overflow-x-scroll py-2 scroll-smooth scrollbar-hide w-full ${isMobile ? "" : "justify-center"}`}
           sx={{
             scrollbarWidth: "none",
             "&::-webkit-scrollbar": { display: "none" },

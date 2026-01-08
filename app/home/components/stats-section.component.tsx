@@ -4,29 +4,68 @@ import { useEffect, useRef, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { STATS_SECTION } from "@/home/constants/home-carousel.constant";
 
-const COUNT_DURATION = 2000; // ms
+const COUNT_DURATION = 2000;
+
+/* ---------------- Helpers ---------------- */
+const clamp = (value: number, min = 0, max = 1) =>
+  Math.min(Math.max(value, min), max);
+
+const lerpColor = (from: number, to: number, progress: number) =>
+  Math.round(from + (to - from) * progress);
 
 export default function StatsSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement | null>(null);
+
+  /* ---------- Scroll progress for TEXT ---------- */
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  /* ---------- Number animation (unchanged) ---------- */
+  const [numbersVisible, setNumbersVisible] = useState(false);
   const [counts, setCounts] = useState<number[]>(
     STATS_SECTION.stats.map(() => 0)
   );
 
+  /* ---------- Scroll listener (TEXT ONLY) ---------- */
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      const progress = clamp((viewportHeight - rect.top) / rect.height);
+
+      setScrollProgress(progress);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* ---------- IntersectionObserver for NUMBERS ---------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
+        if (entry.isIntersecting) {
+          setNumbersVisible(true);
+          observer.disconnect();
+        }
       },
       { threshold: 0.4 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
   }, []);
 
+  /* ---------- Number count animation (unchanged) ---------- */
   useEffect(() => {
-    if (!visible) return;
+    if (!numbersVisible) return;
 
     STATS_SECTION.stats.forEach((stat, index) => {
       const start = performance.now();
@@ -47,66 +86,82 @@ export default function StatsSection() {
 
       requestAnimationFrame(animate);
     });
-  }, [visible]);
+  }, [numbersVisible]);
 
-  /* ---------- Word-by-word Animation ---------- */
+  /* ---------- Word animation ---------- */
   const renderAnimatedText = (
     text: string,
-    textVariant: string,
-    baseDelay = 0
-  ) =>
-    text.split(" ").map((word, index) => (
-      <Box
-        key={index}
-        component="span"
-        className={`inline-block mr-1 transition-all duration-1500 ease-out ${
-          visible
-            ? "text-black opacity-100 translate-y-0"
-            : "text-gray-300 opacity-50 translate-y-2"
-        }`}
-        style={{
-          transitionDelay: `${baseDelay + index * 60}ms`,
-        }}
-      >
-        <Typography variant={textVariant as any}>{word}</Typography>
-      </Box>
-    ));
+    variant: string,
+    phaseStart: number,
+    phaseEnd: number
+  ) => {
+    const words = text.split(" ");
+    const phaseProgress = clamp(
+      (scrollProgress - phaseStart) / (phaseEnd - phaseStart)
+    );
+
+    return words.map((word, index) => {
+      const wordStart = index / words.length;
+      const wordEnd = (index + 1) / words.length;
+
+      const wordProgress = clamp(
+        (phaseProgress - wordStart) / (wordEnd - wordStart)
+      );
+
+      const color = lerpColor(209, 17, wordProgress);
+
+      return (
+        <Box
+          key={index}
+          component="span"
+          className="mr-1 inline-block"
+          style={{
+            color: `rgb(${color}, ${color}, ${color})`,
+          }}
+        >
+          <Typography component="span" variant={variant as any}>
+            {word}
+          </Typography>
+        </Box>
+      );
+    });
+  };
 
   return (
     <Box
       ref={sectionRef}
-      className="mx-auto max-w-5xl px-6 py-10 flex flex-col gap-8"
+      className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-16"
     >
-      <Box className="flex flex-col gap-4 items-center pt-8">
-        <Box className="mb-8 text-center font-serif text-4xl italic leading-tight">
-          {renderAnimatedText(STATS_SECTION.header, "h1")}
+      {/* ---------- TEXT ---------- */}
+      <Box className="flex flex-col gap-8 items-center text-center">
+        <Box className="font-serif text-4xl italic leading-tight">
+          {renderAnimatedText(
+            STATS_SECTION.header,
+            "h1",
+            0,
+            0.5 // HEADER FIRST
+          )}
         </Box>
 
-        <Box className="mx-auto mb-20 max-w-3xl text-center text-sm leading-relaxed">
-          {renderAnimatedText(STATS_SECTION.description, "body2", 600)}
+        <Box className="max-w-3xl text-sm leading-relaxed">
+          {renderAnimatedText(
+            STATS_SECTION.description,
+            "body2",
+            0.5,
+            1 // DESCRIPTION AFTER HEADER
+          )}
         </Box>
       </Box>
 
-      <Box className="grid grid-cols-2 gap-x-16 gap-y-20">
+      {/* ---------- STATS ---------- */}
+      <Box ref={statsRef} className="grid grid-cols-2 gap-x-16 gap-y-20">
         {STATS_SECTION.stats.map((stat, index) => (
           <Box key={index}>
             <Box className="mb-6 h-px w-full bg-gray-200" />
 
-            <Typography
-              variant="numeric01"
-              className={`font-light transition-colors duration-700 ${
-                visible ? "text-black" : "text-gray-300"
-              }`}
-            >
-              {counts[index]}
-            </Typography>
+            <Typography variant="numeric01">{counts[index]}</Typography>
 
-            <Typography
-              variant="subtitle1"
-              className={`mt-1 px-1 transition-colors duration-700 ${
-                visible ? "text-gray-700" : "text-gray-300"
-              }`}
-            >
+            <Typography variant="subtitle1" className="mt-1 px-1 text-gray-700">
               {stat.label}
             </Typography>
           </Box>

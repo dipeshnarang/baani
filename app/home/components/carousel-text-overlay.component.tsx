@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 
 interface CarouselTextOverlayComponentProps {
   title: string[];
@@ -9,16 +9,24 @@ const CarouselTextOverlayComponent = ({
   title,
   subtitle,
 }: CarouselTextOverlayComponentProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box className="flex flex-col gap-2 absolute bottom-[5%] md:bottom-[10%] left-[6%] md:left-[6%] text-white">
-      {title.map((title, index) => (
-        <Typography key={index} variant="h2" className="font-bold mb-2">
-          {title}
-        </Typography>
-      ))}
+    <Box className="flex flex-col gap-6 absolute bottom-[5%] md:bottom-[5%] left-[6%] md:left-[6%] text-white">
+      <Box className="flex flex-col">
+        {title.map((title, index) => (
+          <Typography
+            key={index}
+            variant={isMobile ? "h4" : "imageOverlay"}
+            className="font-bold mb-2"
+          >
+            {title}
+          </Typography>
+        ))}
+      </Box>
 
       {subtitle.map((subtitle, index) => (
-        <Typography key={index} variant="h4" className="font-normal">
+        <Typography key={index} variant="body1" className="">
           {subtitle}
         </Typography>
       ))}
