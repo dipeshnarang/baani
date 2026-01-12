@@ -1,17 +1,21 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { useRouter } from "next/navigation";
 
 interface ExploreCardProps {
   image: string;
   title: string;
   subtitle: string;
+  link: string;
 }
 
 export default function ExploreCard({
   image,
   title,
   subtitle,
+  link
 }: ExploreCardProps) {
+    const router = useRouter()
   return (
     <Box
       className="
@@ -50,6 +54,9 @@ export default function ExploreCard({
             text-gray-800
             hover:bg-white
           "
+          onClick={() => {
+            router.push(link)
+          }}
         >
           <ArrowOutwardIcon fontSize="small" />
         </IconButton>

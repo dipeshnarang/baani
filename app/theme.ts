@@ -30,6 +30,7 @@ let theme = createTheme({
       "@media (min-width:600px)": {
         fontSize: "3rem",
       },
+      fontFamily: "DM Serif Text",
     },
     h2: {
       fontSize: "1.6rem",
@@ -77,7 +78,28 @@ let theme = createTheme({
     },
     imageOverlay: {
       fontFamily: "DM Sans",
-      fontSize: '3.75rem'
+      fontSize: "3.75rem",
+    },
+    infoText: {
+      fontFamily: "Ubuntu",
+      fontSize: "1.1rem",
+      lineHeight: 1,
+    },
+    galleryHeader: {
+      fontSize: "3.25rem",
+      fontWeight: 500,
+      lineHeight: 1.2,
+      fontFamily: "DM Sans",
+    },
+    locationHeader: {
+      fontSize: '1.75rem',
+      fontFamily: 'Ubuntu',
+      fontWeight: '500'
+    },
+    locationAddress: {
+      fontSize: '1rem',
+      fontFamily: 'Ubuntu',
+      fontWeight: '400'
     }
   },
 

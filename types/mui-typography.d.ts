@@ -7,6 +7,10 @@ declare module "@mui/material/styles" {
     numeric02: React.CSSProperties;
     cardHeader: React.CSSProperties;
     imageOverlay: React.CSSProperties;
+    infoText: React.CSSProperties;
+    galleryHeader: React.CSSProperties;
+    locationHeader: React.CSSProperties;
+    locationAddress: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -14,6 +18,10 @@ declare module "@mui/material/styles" {
     numeric02?: React.CSSProperties;
     cardHeader: React.CSSProperties;
     imageOverlay: React.CSSProperties;
+    infoText: React.CSSProperties;
+    galleryHeader: React.CSSProperties;
+    locationHeader: React.CSSProperties;
+    locationAddress: React.CSSProperties;
   }
 }
 
@@ -23,5 +31,9 @@ declare module "@mui/material/Typography" {
     numeric02: true;
     cardHeader: true;
     imageOverlay: true;
+    infoText: true;
+    galleryHeader: true;
+    locationHeader: true;
+    locationAddress: true;
   }
 }

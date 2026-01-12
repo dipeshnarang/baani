@@ -1,0 +1,110 @@
+{
+  "hotels": [
+    {
+      "slug": "double-tree-by-hilton",
+      "info": {
+        "image": "/images/double-tree-hilton.jpg",
+        "logo": "/images/hilton-logo.png",
+        "title": "Double Tree by Hilton",
+        "description": "DoubleTree by Hilton Gurugram Baani Square (Asset, 100% owned by Baani Group) at Baani Square is located near the prime corporate, commercial and residential districts in Gurugram, Delhi NCR. This grand hotel is just a 10-minute drive from DLF Cyber City, which is a central business and entertainment hub. The guest rooms & suites at the hotel offer brilliant facilities that include complimentary high-speed internet access and, a hospitality centre with a mini refrigerator & coffee/tea maker. The lush lawns and the courtyard surrounding the hotel are perfectly suited for business events, social gatherings, private receptions and weddings"
+      },
+      "gallery": {
+        "images": [
+          "/images/hilton-sec-50/1.jpg",
+          "/images/hilton-sec-50/2.png",
+          "/images/hilton-sec-50/3.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Double Tree by Hilton, Gurugram",
+        "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
+        "coordinates": [28.4595, 77.0266]
+      }
+    },
+    {
+      "slug": "hilton-baani-city-centre",
+      "info": {
+        "image": "/images/baani-city-center.png",
+        "logo": "/images/city-center-logo.png",
+        "title": "Hilton - Baani City Centre",
+        "description": "Baani City Center is strategically located at Sector 63, Gurugram. The project offers High-Street Retail, a Food Court and service Apartments. Baani City Center offers you the opportunity to enjoy an international lifestyle at your doorstep. With its modern and trendy European appeal, Baani City Center brings you a world of choices in premium retail, living and hospitality. The Retail space offered is designed to cater to both national and international brands & the food court has ample space for assorted food outlets.Baani City Center is situated amidst the fastest-growing Golf Course Zone in Gurugram and witnesses maximum footfall."
+      },
+      "gallery": {
+        "images": [
+          "/images/hilton-sec-50/1.jpg",
+          "/images/hilton-sec-50/2.png",
+          "/images/hilton-sec-50/3.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Double Tree by Hilton, Gurugram",
+        "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
+        "coordinates": [28.4595, 77.0266]
+      }
+    }
+  ]
+}

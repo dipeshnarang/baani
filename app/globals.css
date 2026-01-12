@@ -24,3 +24,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes pictureGalleryMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.picture-gallery-marquee {
+  animation: pictureGalleryMarquee 30s linear infinite;
+  will-change: transform;
+}
+
+.picture-gallery-marquee:hover {
+  animation-play-state: paused;
+}

@@ -36,11 +36,13 @@ export const EXPLORE_SECTION = {
       image: "/images/baani-city-center.png",
       title: "Hilton - Baani City Centre",
       subtitle: "Sector - 63",
+      link: '/information/hilton-baani-city-centre'
     },
     {
       image: "/images/double-tree-hilton.jpg",
       title: "Double Tree by Hilton",
       subtitle: "Sector - 50",
+      link: '/information/double-tree-by-hilton'
     },
   ],
 };

@@ -4,7 +4,7 @@ import { Box, Typography, Button } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import VerticalImageMarquee from "@/core/components/vertical-image-carousel.component";
 import { EXPLORE_LANDMARK } from "../constants/home-carousel.constant";
-import { ExploreButton } from "../styled/home.styled";
+import { ContainedButton } from "@/core/styled/button.styled";
 
 export default function IconicLandmarksSection() {
   return (
@@ -46,9 +46,9 @@ export default function IconicLandmarksSection() {
                 <li>◆ Impeccable craftsmanship</li>
               </ul>
             </Box>
-            <ExploreButton variant="contained" endIcon={<ArrowOutwardIcon />}>
+            <ContainedButton variant="contained" endIcon={<ArrowOutwardIcon />}>
               Explore commercial portfolio
-            </ExploreButton>
+            </ContainedButton>
           </Box>
         </Box>
       </Box>
