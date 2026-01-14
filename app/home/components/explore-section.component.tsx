@@ -56,9 +56,9 @@ export default function ExploreSection() {
   };
 
   return (
-    <Box className="mx-auto px-6 pb-14">
+    <Box className="mx-auto px-6 pb-14 bg-white">
       <Box className="mb-12 text-center">
-        <Typography variant="h1">{EXPLORE_SECTION.header}</Typography>
+        <Typography variant="h1" color='black'>{EXPLORE_SECTION.header}</Typography>
         <Typography variant="h1" className="font-serif italic text-yellow-500">
           {EXPLORE_SECTION.subHeader}
         </Typography>

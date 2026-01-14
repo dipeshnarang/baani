@@ -130,7 +130,7 @@ export default function StatsSection() {
   return (
     <Box
       ref={sectionRef}
-      className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-16"
+      className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-16 bg-white"
     >
       {/* ---------- TEXT ---------- */}
       <Box className="flex flex-col gap-8 items-center text-center">
@@ -154,12 +154,17 @@ export default function StatsSection() {
       </Box>
 
       {/* ---------- STATS ---------- */}
-      <Box ref={statsRef} className="grid grid-cols-2 gap-x-16 gap-y-20">
+      <Box
+        ref={statsRef}
+        className="grid grid-cols-2 gap-x-16 gap-y-20 bg-white"
+      >
         {STATS_SECTION.stats.map((stat, index) => (
           <Box key={index}>
             <Box className="mb-6 h-px w-full bg-gray-200" />
 
-            <Typography variant="numeric01">{counts[index]}</Typography>
+            <Typography variant="numeric01" color="black">
+              {counts[index]}
+            </Typography>
 
             <Typography variant="subtitle1" className="mt-1 px-1 text-gray-700">
               {stat.label}

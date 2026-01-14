@@ -15,7 +15,7 @@ export default function IconicLandmarksSection() {
           {EXPLORE_LANDMARK.header[0]}{" "}
           <span className="text-black">{EXPLORE_LANDMARK.header[1]}</span>
         </Typography>
-        <Typography variant="h1" className="font-semibold">
+        <Typography variant="h1" className="font-semibold text-black">
           {EXPLORE_LANDMARK.subheader[0]}
         </Typography>
       </Box>
@@ -28,7 +28,10 @@ export default function IconicLandmarksSection() {
         <Box className="md:p-8">
           <Box className="flex flex-col gap-6 rounded-3xl bg-white p-10 shadow-sm">
             <Box className="flex flex-col gap-4">
-              <Typography variant="h3" className="mb-2 font-semibold">
+              <Typography
+                variant="h3"
+                className="mb-2 font-semibold text-black"
+              >
                 Experiential Landmarks Crafted
               </Typography>
 

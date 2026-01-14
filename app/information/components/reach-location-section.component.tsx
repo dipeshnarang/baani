@@ -19,10 +19,13 @@ export default function HowToReachSection({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box className="mx-auto items-center px-6 py-24">
+    <Box className="mx-auto items-center px-6 py-24 bg-white">
       {/* Heading */}
       <Box className="mb-12">
-        <Typography variant="h1" className="mb-30 text-center italic">
+        <Typography
+          variant="h1"
+          className="mb-30 text-center italic text-black"
+        >
           How to reach?
         </Typography>
       </Box>
@@ -42,7 +45,9 @@ export default function HowToReachSection({
         {/* Address */}
         <Box className="flex flex-col justify-center gap-4">
           <Box className="flex flex-col gap-2">
-            <Typography variant="locationHeader">{title}</Typography>
+            <Typography variant="locationHeader" className="text-black">
+              {title}
+            </Typography>
 
             <Typography variant="locationAddress" className="text-gray-600">
               {address}
