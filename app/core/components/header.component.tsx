@@ -24,7 +24,6 @@ const navItems = [
   { label: "Hotel Collection", href: "/hotels" },
   { label: "Upcoming Projects", href: "/projects" },
   { label: "Our Story", href: "/about" },
-  { label: "Enquire Now", href: "" },
 ];
 
 export default function Header() {
@@ -141,6 +140,9 @@ export default function Header() {
                 {item.label}
               </MenuItem>
             ))}
+            <MenuItem key="enquire now" component={Link} href="">
+              Enquire Now
+            </MenuItem>
           </Menu>
         )}
       </AppHeader>
