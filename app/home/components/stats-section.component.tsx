@@ -159,7 +159,7 @@ export default function StatsSection() {
         className="grid grid-cols-2 gap-x-16 gap-y-20 bg-white"
       >
         {STATS_SECTION.stats.map((stat, index) => (
-          <Box key={index}>
+          <Box key={index} className="flex flex-col items-center">
             <Box className="mb-6 h-px w-full bg-gray-200" />
 
             <Typography variant="numeric01" color="black">

@@ -22,8 +22,8 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Commercial Portfolio", href: "/commercial" },
   { label: "Hotel Collection", href: "/hotels" },
-  { label: "Upcoming Projects", href: "/projects" },
-  { label: "Our Story", href: "/about" },
+  // { label: "Upcoming Projects", href: "/projects" },
+  // { label: "Our Story", href: "/about" },
 ];
 
 export default function Header() {

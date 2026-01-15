@@ -5,10 +5,11 @@ import ExploreSection from "@/home/components/explore-section.component";
 import LandmarkSection from "./home/components/landmark-section.component";
 import IconicLandmarksSection from "./home/components/explore-landmark-section.component";
 import Footer from "./core/components/footer.component";
+import { Box } from "@mui/material";
 
 export default function Home() {
   return (
-    <>
+    <Box className="bg-white">
       <Header />
       <HomeCarousel />
       <StatsSection />
@@ -16,6 +17,6 @@ export default function Home() {
       <LandmarkSection />
       <IconicLandmarksSection />
       <Footer />
-    </>
+    </Box>
   );
 }

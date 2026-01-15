@@ -21,10 +21,10 @@ export const STATS_SECTION = {
   description:
     "At Baani, we always think ahead but our focus remains unerringly on delighting our customers and stakeholders. Functioning through an array of best-of-class practices and utilizing leading technologies, we believe either in staying ahead of the wave or riding it.",
   stats: [
-    { value: 15, label: "Years" },
-    { value: 44, label: "Projects" },
-    { value: 8, label: "Awards" },
-    { value: 24, label: "Projects" },
+    { value: 35, label: "Years" },
+    { value: 15, label: "Projects" },
+    // { value: 8, label: "Awards" },
+    // { value: 24, label: "Projects" },
   ],
 };
 
