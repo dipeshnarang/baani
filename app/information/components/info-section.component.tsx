@@ -32,7 +32,10 @@ export default function ProjectInfoSection({
 
   const [showReadMore, setShowReadMore] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [imageDimensions, setImageDimensions] = useState<{ width?: string; height?: string }>({});
+  const [imageDimensions, setImageDimensions] = useState<{
+    width?: string;
+    height?: string;
+  }>({});
 
   /* ---------- Measure heights (only collapsed mode) ---------- */
   useEffect(() => {
@@ -49,14 +52,20 @@ export default function ProjectInfoSection({
       // Store image dimensions for expanded view (only if not already stored)
       if (imageRef.current && imageElementRef.current) {
         const imgElement = imageElementRef.current;
-        const currentWidth = imgElement.offsetWidth || imageRef.current.offsetWidth;
-        const currentHeight = imgElement.offsetHeight || imageRef.current.offsetHeight;
-        
+        const currentWidth =
+          imgElement.offsetWidth || imageRef.current.offsetWidth;
+        const currentHeight =
+          imgElement.offsetHeight || imageRef.current.offsetHeight;
+
         if (currentWidth > 0 && currentHeight > 0) {
-          setImageDimensions((prev) => prev.width ? prev : {
-            width: `${currentWidth}px`,
-            height: `${currentHeight}px`,
-          });
+          setImageDimensions((prev) =>
+            prev.width
+              ? prev
+              : {
+                  width: `${currentWidth}px`,
+                  height: `${currentHeight}px`,
+                }
+          );
         }
       }
     };
@@ -71,7 +80,7 @@ export default function ProjectInfoSection({
   }, [description, expanded]);
 
   return (
-    <Box className="bg-black px-6 md:px-16 pt-40 pb-20">
+    <Box className="bg-black px-6 md:px-16 pt-40 pb-10">
       <Box className="mx-auto text-white">
         {/* ===== COLLAPSED: GRID LAYOUT ===== */}
         {!expanded && (
@@ -85,9 +94,13 @@ export default function ProjectInfoSection({
                 ref={imageElementRef}
                 src={image}
                 alt={title}
-                className="h-full w-full object-cover"
+                className={isMobile ? "" : "h-[35rem] w-[40rem] object-cover"}
                 onLoad={() => {
-                  if (imageElementRef.current && !expanded && !imageDimensions.width) {
+                  if (
+                    imageElementRef.current &&
+                    !expanded &&
+                    !imageDimensions.width
+                  ) {
                     setImageDimensions({
                       width: `${imageElementRef.current.offsetWidth}px`,
                       height: `${imageElementRef.current.offsetHeight}px`,
@@ -98,7 +111,7 @@ export default function ProjectInfoSection({
             </Box>
 
             {/* Text */}
-            <Box className="md:col-span-3 flex flex-col gap-2 items-start">
+            <Box className="md:col-span-3 flex flex-col gap-4 items-start py-4">
               <img
                 src={logo}
                 alt={`${title} logo`}
@@ -111,7 +124,7 @@ export default function ProjectInfoSection({
 
               <Box
                 ref={descriptionRef}
-                className="overflow-hidden relative"
+                className="overflow-hidden relative mb-4"
                 style={{
                   maxHeight: imageRef.current?.offsetHeight
                     ? imageRef.current.offsetHeight - 255
@@ -125,13 +138,14 @@ export default function ProjectInfoSection({
                   {description}
                 </Typography>
                 {showReadMore && (
-                  <Box 
+                  <Box
                     className="absolute bottom-0 right-0 text-gray-300 text-lg font-bold"
                     style={{
-                      background: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 60%, transparent 100%)',
-                      paddingLeft: '1.5rem',
-                      paddingRight: '0.25rem',
-                      lineHeight: '1.5',
+                      background:
+                        "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 60%, transparent 100%)",
+                      paddingLeft: "1.5rem",
+                      paddingRight: "0.25rem",
+                      lineHeight: "1.5",
                     }}
                   >
                     ...
@@ -152,7 +166,7 @@ export default function ProjectInfoSection({
               <Button
                 variant="contained"
                 endIcon={<ArrowOutwardIcon />}
-                className="mt-10 bg-white text-black normal-case hover:bg-gray-200 w-full md:w-60"
+                className="bg-white text-black normal-case hover:bg-gray-200 w-full md:w-60"
               >
                 <Typography variant="body2">Schedule a Visit</Typography>
               </Button>
@@ -168,9 +182,9 @@ export default function ProjectInfoSection({
               ref={imageRef}
               className="float-left mr-8 mb-6 overflow-hidden rounded-3xl flex-shrink-0"
               style={{
-                width: imageDimensions.width || (isMobile ? '100%' : '40vw'),
-                height: imageDimensions.height || 'auto',
-                maxWidth: imageDimensions.width || '40rem',
+                width: imageDimensions.width || (isMobile ? "100%" : "40vw"),
+                height: imageDimensions.height || "auto",
+                maxWidth: imageDimensions.width || "40rem",
               }}
               sx={
                 !isMobile && imageDimensions.width
@@ -179,11 +193,11 @@ export default function ProjectInfoSection({
                       WebkitShapeOutside: "inset(0 round 24px)",
                     }
                   : !isMobile
-                  ? {
-                      shapeOutside: "inset(0 round 24px)",
-                      WebkitShapeOutside: "inset(0 round 24px)",
-                    }
-                  : {}
+                    ? {
+                        shapeOutside: "inset(0 round 24px)",
+                        WebkitShapeOutside: "inset(0 round 24px)",
+                      }
+                    : {}
               }
             >
               <img
@@ -191,9 +205,9 @@ export default function ProjectInfoSection({
                 alt={title}
                 className="h-full w-full object-cover"
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
                 }}
               />
             </Box>
@@ -216,7 +230,7 @@ export default function ProjectInfoSection({
               {description}
             </Typography>
 
-            <Box className='mt-1'>
+            <Box className="mt-1">
               <Typography
                 variant="infoText"
                 onClick={() => setExpanded(false)}
@@ -226,7 +240,7 @@ export default function ProjectInfoSection({
               </Typography>
             </Box>
 
-            <Box className='mt-4'>
+            <Box className="mt-4">
               <Button
                 variant="contained"
                 endIcon={<ArrowOutwardIcon />}
