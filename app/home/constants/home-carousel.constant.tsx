@@ -76,9 +76,15 @@ export const EXPLORE_LANDMARK = {
   header: ["Elevating the Cityscape", "with"],
   subheader: ["Iconic Landmarks"],
   imageList: [
-    "/images/landmark-1.png",
-    "/images/landmark-2.jpg",
-    "/images/landmark-3.jpg",
+    "/images/l-2.jpg",
+    "/images/l-3.jpg",
+    "/images/l-4.jpg",
+    "/images/l-5.jpg",
+    "/images/l-6.jpg",
+    "/images/l-7.jpg",
+    "/images/l-8.jpg",
+    "/images/l-9.jpg",
+    "/images/l-10.jpg",
   ],
   pointers: [
     {

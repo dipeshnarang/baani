@@ -8,12 +8,12 @@ interface VerticalImageMarqueeProps {
 
 export default function VerticalImageMarquee({
   images,
-  speed = 20,
+  speed = 30,
 }: VerticalImageMarqueeProps) {
   const loopImages = [...images, ...images];
 
   return (
-    <Box className="relative h-[520px] overflow-hidden rounded-3xl">
+    <Box className="relative h-[540px] overflow-hidden rounded-3xl">
       <Box
         className="flex flex-col gap-6"
         sx={{
@@ -21,13 +21,16 @@ export default function VerticalImageMarquee({
         }}
       >
         {loopImages.map((src, index) => (
-          <Box key={index} className="h-70 w-full overflow-hidden rounded-2xl">
+          <Box key={index} className="h-90 w-full overflow-hidden rounded-2xl">
             <Image
               src={src}
-              alt={`landmark-${index}`}
-              height={200}
+              alt={`l-${index}`}
+              height={300}
               width={200}
               className="h-full w-full object-cover"
+              priority
+              loading="eager"
+              unoptimized
             />
           </Box>
         ))}
