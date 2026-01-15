@@ -1,3 +1,5 @@
+import { Gem, Building, Pyramid, Rocket, UserStar } from "lucide-react";
+
 export const homeCarouselSlides = [
   {
     image: "/images/home-1.jpg",
@@ -36,13 +38,13 @@ export const EXPLORE_SECTION = {
       image: "/images/baani-city-center.png",
       title: "Hilton - Baani City Centre",
       subtitle: "Sector - 63",
-      link: '/information/hilton-baani-city-centre'
+      link: "/information/hilton-baani-city-centre",
     },
     {
       image: "/images/double-tree-hilton.jpg",
       title: "Double Tree by Hilton",
       subtitle: "Sector - 50",
-      link: '/information/double-tree-by-hilton'
+      link: "/information/double-tree-by-hilton",
     },
   ],
 };
@@ -78,5 +80,26 @@ export const EXPLORE_LANDMARK = {
     "/images/landmark-2.jpg",
     "/images/landmark-3.jpg",
   ],
+  pointers: [
+    {
+      icon: <Gem />,
+      text: "Premium High Street Retail and Service Apartments",
+    },
+    {
+      icon: <Building />,
+      text: "Luxurious Architectural Design",
+    },
+    {
+      icon: <Pyramid />,
+      text: "Timeless landscapes with elegance",
+    },
+    {
+      icon: <Rocket />,
+      text: "Blend of Technology and Creativity",
+    },
+    {
+      icon: <UserStar />,
+      text: "Impeccable craftsmanship",
+    },
+  ],
 };
-

@@ -42,11 +42,14 @@ export default function IconicLandmarksSection() {
             </Box>
             <Box>
               <ul className="mb-8 space-y-3 text-sm text-gray-700">
-                <li>◆ Premium High Street Retail and Service Apartments</li>
-                <li>◆ Luxurious Architectural Design</li>
-                <li>◆ Timeless landscapes with elegance</li>
-                <li>◆ Blend of Technology and Creativity</li>
-                <li>◆ Impeccable craftsmanship</li>
+                {EXPLORE_LANDMARK.pointers.map((pointer) => {
+                  return (
+                    <li className="flex items-center gap-2">
+                      {pointer.icon}
+                      {pointer.text}
+                    </li>
+                  );
+                })}
               </ul>
             </Box>
             <ContainedButton variant="contained" endIcon={<ArrowOutwardIcon />}>
