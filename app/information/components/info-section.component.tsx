@@ -94,7 +94,11 @@ export default function ProjectInfoSection({
                 ref={imageElementRef}
                 src={image}
                 alt={title}
-                className={isMobile ? "" : "h-[35rem] w-[40rem] object-cover"}
+                className={
+                  isMobile
+                    ? "h-[20rem] w-full"
+                    : "h-[35rem] w-full object-cover"
+                }
                 onLoad={() => {
                   if (
                     imageElementRef.current &&
