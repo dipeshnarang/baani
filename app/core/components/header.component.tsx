@@ -17,11 +17,12 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppHeader } from "@/core/styled/header.styled";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Commercial Portfolio", href: "/commercial" },
-  { label: "Hotel Collection", href: "/hotels" },
+  { label: "Hotel Collection", scrollTo: "explore-section" },
   // { label: "Upcoming Projects", href: "/projects" },
   // { label: "Our Story", href: "/about" },
 ];
@@ -29,6 +30,17 @@ const navItems = [
 export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleScrollNav = (sectionId: string) => {
+    if (pathname === "/") {
+      const section = document.getElementById(sectionId);
+      section?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
 
   const [scrolled, setScrolled] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -86,8 +98,11 @@ export default function Header() {
             {navItems.map((item) => (
               <Button
                 key={item.label}
-                component={Link}
-                href={item.href}
+                onClick={() =>
+                  item.scrollTo
+                    ? handleScrollNav(item.scrollTo)
+                    : router.push(item.href!)
+                }
                 className="font-medium normal-case text-white hover:text-[#F5C518]"
               >
                 <Typography color="primary.white">{item.label}</Typography>
@@ -133,13 +148,17 @@ export default function Header() {
             {navItems.map((item) => (
               <MenuItem
                 key={item.label}
-                component={Link}
-                href={item.href}
-                onClick={handleMenuClose}
+                onClick={() => {
+                  handleMenuClose();
+                  item.scrollTo
+                    ? handleScrollNav(item.scrollTo)
+                    : router.push(item.href!);
+                }}
               >
                 {item.label}
               </MenuItem>
             ))}
+
             <MenuItem key="enquire now" component={Link} href="">
               Enquire Now
             </MenuItem>
