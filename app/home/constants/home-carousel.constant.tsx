@@ -88,23 +88,23 @@ export const EXPLORE_LANDMARK = {
   ],
   pointers: [
     {
-      icon: <Gem />,
+      icon: <Gem strokeWidth={1.5} />,
       text: "Premium High Street Retail and Service Apartments",
     },
     {
-      icon: <Building />,
+      icon: <Building strokeWidth={1.5} />,
       text: "Luxurious Architectural Design",
     },
     {
-      icon: <Pyramid />,
+      icon: <Pyramid strokeWidth={1.5} />,
       text: "Timeless landscapes with elegance",
     },
     {
-      icon: <Rocket />,
+      icon: <Rocket strokeWidth={1.5} />,
       text: "Blend of Technology and Creativity",
     },
     {
-      icon: <UserStar />,
+      icon: <UserStar strokeWidth={1.5} />,
       text: "Impeccable craftsmanship",
     },
   ],
