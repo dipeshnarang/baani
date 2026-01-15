@@ -8,7 +8,7 @@ interface VerticalImageMarqueeProps {
 
 export default function VerticalImageMarquee({
   images,
-  speed = 30,
+  speed = 50,
 }: VerticalImageMarqueeProps) {
   const loopImages = [...images, ...images];
 
