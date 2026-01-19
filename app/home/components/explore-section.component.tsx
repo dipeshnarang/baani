@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ExploreCard from "./explore-card.component";
+import ExploreCard from "../../core/components/explore-card.component";
 import { EXPLORE_SECTION } from "../constants/home-carousel.constant";
 
 export default function ExploreSection() {

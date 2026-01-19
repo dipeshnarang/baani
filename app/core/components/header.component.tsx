@@ -21,7 +21,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Commercial Portfolio", href: "/commercial" },
+  { label: "Commercial Portfolio", href: "/commercial-portfolio" },
   { label: "Hotel Collection", scrollTo: "explore-section" },
   // { label: "Upcoming Projects", href: "/projects" },
   // { label: "Our Story", href: "/about" },

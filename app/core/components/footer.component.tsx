@@ -5,12 +5,21 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { FOOTER_CONTENT } from "../constants/core.constant";
+import Image from "next/image";
 
 export default function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box className="bg-black px-4 py-10">
+    <Box
+      className="bg-black px-4 py-10 h-[30rem]"
+      sx={{
+        backgroundImage: "url(/images/footer.png)", // 👈 skyline image
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <Box className="flex justify-center">
         <Box
           className={
@@ -18,7 +27,6 @@ export default function Footer() {
               ? "flex flex-col gap-8"
               : "flex flex-row w-7xl justify-between space-between"
           }
-          //   sx={{ border: "1px solid red" }}
         >
           <Box className="max-w-md">
             <Typography variant="h1" className="italic text-white">
@@ -67,6 +75,14 @@ export default function Footer() {
             </Box>
           </Box>
         </Box>
+      </Box>
+      <Box className="w-full justify-center flex mt-16">
+        <Image
+          src={"/images/baani-logo.png"}
+          alt="Baani Logo"
+          width={500}
+          height={100}
+        />
       </Box>
     </Box>
   );

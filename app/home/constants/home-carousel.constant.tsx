@@ -7,7 +7,7 @@ export const homeCarouselSlides = [
     subtitle: ["Live your best life and find your perfect property"],
   },
   {
-    image: "/images/home-2.jpg",
+    image: "/images/the-corporate-one.jpg",
     title: ["Finest Work of Architecture", "with Ample Prospects"],
     subtitle: ["Live your best life and find your perfect property"],
   },
@@ -35,7 +35,7 @@ export const EXPLORE_SECTION = {
   subHeader: "hotel collection",
   items: [
     {
-      image: "/images/baani-city-center.png",
+      image: "/images/baani-city-centre.png",
       title: "Hilton - Baani City Centre",
       subtitle: "Sector - 63",
       link: "/information/hilton-baani-city-centre",
@@ -76,7 +76,7 @@ export const EXPLORE_LANDMARK = {
   header: ["Elevating the Cityscape", "with"],
   subheader: ["Iconic Landmarks"],
   imageList: [
-    "/images/l-2.jpg",
+    "/images/xchanging-271.jpg",
     "/images/l-3.jpg",
     "/images/l-4.jpg",
     "/images/l-5.jpg",
