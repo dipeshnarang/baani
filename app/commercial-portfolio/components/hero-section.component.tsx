@@ -23,16 +23,19 @@ export default function HeroBusinessSection({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const imageRef = useRef<HTMLImageElement | null>(null);
 
-  /* ---------- Scroll Parallax ---------- */
+  /* ---------- Scroll Parallax (lighter on mobile) ---------- */
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollOffset = Math.min(scrollY * 0.12, 80);
+  const scrollOffset = Math.min(
+    scrollY * (isMobile ? 0.06 : 0.12),
+    isMobile ? 40 : 80
+  );
 
-  /* ---------- Pointer Tilt ---------- */
+  /* ---------- Pointer Tilt (desktop only) ---------- */
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isMobile || !imageRef.current) return;
 
@@ -40,8 +43,8 @@ export default function HeroBusinessSection({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateX = (y / rect.height - 0.5) * -12.5;
-    const rotateY = (x / rect.width - 0.5) * 12.5;
+    const rotateX = (y / rect.height - 0.5) * -10;
+    const rotateY = (x / rect.width - 0.5) * 10;
 
     setTilt({ x: rotateX, y: rotateY });
   };
@@ -52,7 +55,7 @@ export default function HeroBusinessSection({
     <Box
       className="relative w-full overflow-hidden"
       sx={{
-        height: "80vh",
+        height: { xs: "72vh", md: "80vh" }, // 👈 mobile-safe height
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -65,21 +68,30 @@ export default function HeroBusinessSection({
       <Box
         className="absolute z-20 w-full text-center px-6"
         sx={{
-          top: "clamp(18vh, 22vh, 26vh)", // 👈 THIS is the key
+          top: {
+            xs: "clamp(14vh, 18vh, 22vh)", // 👈 gentler collision on mobile
+            md: "clamp(18vh, 22vh, 26vh)",
+          },
         }}
       >
         <Typography
           variant="h1"
           className="font-serif italic text-white"
-          sx={{ fontSize: { xs: "2.4rem", md: "4rem" } }}
+          sx={{
+            fontSize: { xs: "2rem", md: "4rem" },
+            lineHeight: 1.1,
+          }}
         >
           {titleItalic}
         </Typography>
 
         <Typography
           variant="h1"
-          className="mt-3 text-white"
-          sx={{ fontSize: { xs: "2.6rem", md: "4.5rem" } }}
+          className="mt-2 text-white"
+          sx={{
+            fontSize: { xs: "2.2rem", md: "4.5rem" },
+            lineHeight: 1.1,
+          }}
         >
           {titleNormal}
         </Typography>
@@ -87,8 +99,8 @@ export default function HeroBusinessSection({
 
       {/* BUILDING IMAGE */}
       <Box
-        className="absolute inset-0 z-10 pt-50 overflow-hidden"
-        sx={{ perspective: "1200px" }}
+        className="absolute inset-0 z-10 overflow-hidden"
+        sx={{ perspective: isMobile ? "none" : "1200px" }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -96,15 +108,15 @@ export default function HeroBusinessSection({
           ref={imageRef}
           src={buildingImage}
           alt="Building"
-          className="h-full w-full  object-cover"
+          className="h-full w-full object-cover"
           style={{
             transform: `
-              scale(1.08)
+              scale(${isMobile ? 1.02 : 1.08})
               translateY(${scrollOffset}px)
-              rotateX(${tilt.x}deg)
-              rotateY(${tilt.y}deg)
+              rotateX(${isMobile ? 0 : tilt.x}deg)
+              rotateY(${isMobile ? 0 : tilt.y}deg)
             `,
-            transition: "transform 0.18s ease-out",
+            transition: "transform 0.2s ease-out",
             transformStyle: "preserve-3d",
             willChange: "transform",
           }}
