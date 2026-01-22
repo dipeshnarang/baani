@@ -12,7 +12,7 @@ export default function Footer() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
-      className="bg-black px-4 py-10 h-[30rem]"
+      className="bg-black px-4 py-10"
       sx={{
         backgroundImage: "url(/images/footer.png)", // 👈 skyline image
         backgroundRepeat: "no-repeat",
