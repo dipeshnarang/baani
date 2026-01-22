@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface HeroBusinessSectionProps {
   backgroundImage: string;
@@ -17,23 +17,42 @@ export default function HeroBusinessSection({
   titleNormal,
 }: HeroBusinessSectionProps) {
   const [scrollY, setScrollY] = useState(0);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  /* ---------- Parallax ---------- */
+  const imageRef = useRef<HTMLImageElement | null>(null);
+
+  /* ---------- Scroll Parallax ---------- */
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // subtle, clamped parallax
-  const parallaxOffset = Math.min(scrollY * 0.12, 80);
+  const scrollOffset = Math.min(scrollY * 0.12, 80);
+
+  /* ---------- Pointer Tilt ---------- */
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isMobile || !imageRef.current) return;
+
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = (y / rect.height - 0.5) * -12.5;
+    const rotateY = (x / rect.width - 0.5) * 12.5;
+
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   return (
     <Box
       className="relative w-full overflow-hidden"
       sx={{
-        height: "80vh", // fixed hero height
+        height: "80vh",
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -42,8 +61,13 @@ export default function HeroBusinessSection({
       {/* Overlay */}
       <Box className="absolute inset-0 bg-black/10 z-0" />
 
-      {/* Text */}
-      <Box className="relative z-10 flex flex-col items-center pt-40 text-center px-6">
+      {/* TEXT — collision-controlled */}
+      <Box
+        className="absolute z-20 w-full text-center px-6"
+        sx={{
+          top: "clamp(18vh, 22vh, 26vh)", // 👈 THIS is the key
+        }}
+      >
         <Typography
           variant="h1"
           className="font-serif italic text-white"
@@ -54,33 +78,35 @@ export default function HeroBusinessSection({
 
         <Typography
           variant="h1"
-          className="mt-4 text-white"
+          className="mt-3 text-white"
           sx={{ fontSize: { xs: "2.6rem", md: "4.5rem" } }}
         >
           {titleNormal}
         </Typography>
       </Box>
 
-      {/* Building crop window */}
+      {/* BUILDING IMAGE */}
       <Box
-        className="
-          absolute
-          left-0
-          top-30
-          w-full
-          overflow-hidden
-        "
-        sx={{
-          height: "80vh", // fixed crop height
-        }}
+        className="absolute inset-0 z-10 pt-50 overflow-hidden"
+        sx={{ perspective: "1200px" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       >
         <img
+          ref={imageRef}
           src={buildingImage}
           alt="Building"
-          className="h-full w-full object-cover"
+          className="h-full w-full  object-cover"
           style={{
-            transform: `translateY(${parallaxOffset}px)`,
-            transition: "transform 0.05s linear",
+            transform: `
+              scale(1.08)
+              translateY(${scrollOffset}px)
+              rotateX(${tilt.x}deg)
+              rotateY(${tilt.y}deg)
+            `,
+            transition: "transform 0.18s ease-out",
+            transformStyle: "preserve-3d",
+            willChange: "transform",
           }}
         />
       </Box>
