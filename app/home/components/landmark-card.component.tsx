@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 
 interface LandmarkCardProps {
@@ -12,8 +12,12 @@ export default function LandmarkCard({
   title,
   description,
 }: LandmarkCardProps) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box className="rounded-3xl bg-white p-8 shadow-sm h-[29rem] w-[21rem]">
+    <Box
+      className={`rounded-3xl bg-white p-8 shadow-sm h-[29rem] ${isMobile ? "w-full" : "w-[21rem]"}`}
+    >
       {/* Image */}
       <Box className="mb-10 flex justify-center">
         <Image
