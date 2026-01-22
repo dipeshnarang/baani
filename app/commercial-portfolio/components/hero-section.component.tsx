@@ -35,6 +35,8 @@ export default function HeroBusinessSection({
     isMobile ? 40 : 80
   );
 
+  const parallaxOffset = Math.min(scrollY * 0.12, 80);
+
   /* ---------- Pointer Tilt (desktop only) ---------- */
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isMobile || !imageRef.current) return;
@@ -51,7 +53,63 @@ export default function HeroBusinessSection({
 
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
-  return (
+  return isMobile ? (
+    <Box
+      className="relative w-full overflow-hidden"
+      sx={{
+        height: "80vh", // fixed hero height
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay */}
+      <Box className="absolute inset-0 bg-black/10 z-0" />
+
+      {/* Text */}
+      <Box className="relative z-10 flex flex-col items-center pt-40 text-center px-6">
+        <Typography
+          variant="h1"
+          className="font-serif italic text-white"
+          sx={{ fontSize: { xs: "2.4rem", md: "4rem" } }}
+        >
+          {titleItalic}
+        </Typography>
+
+        <Typography
+          variant="h1"
+          className="mt-4 text-white"
+          sx={{ fontSize: { xs: "2.6rem", md: "4.5rem" } }}
+        >
+          {titleNormal}
+        </Typography>
+      </Box>
+
+      {/* Building crop window */}
+      <Box
+        className="
+          absolute
+          left-0
+          top-30
+          w-full
+          overflow-hidden
+        "
+        sx={{
+          height: "80vh", // fixed crop height
+        }}
+      >
+        <img
+          src={buildingImage}
+          alt="Building"
+          className="h-full w-full object-cover"
+          style={{
+            transform: `translateY(${parallaxOffset}px)`,
+            transition: "transform 0.05s linear",
+          }}
+        />
+      </Box>
+    </Box>
+  ) : (
     <Box
       className="relative w-full overflow-hidden"
       sx={{
