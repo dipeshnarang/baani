@@ -16,32 +16,60 @@ export default function HeroBusinessSection({
   titleItalic,
   titleNormal,
 }: HeroBusinessSectionProps) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  /* ---------- Desktop state ---------- */
   const [scrollY, setScrollY] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const imageRef = useRef<HTMLImageElement | null>(null);
+  /* ---------- Refs ---------- */
+  const desktopImageRef = useRef<HTMLImageElement | null>(null);
+  const mobileImageRef = useRef<HTMLImageElement | null>(null);
 
-  /* ---------- Scroll Parallax (lighter on mobile) ---------- */
+  /* =========================================================
+     MOBILE: Smooth parallax using RAF (NO React state)
+     ========================================================= */
   useEffect(() => {
+    if (!isMobile || !mobileImageRef.current) return;
+
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const offset = Math.min(window.scrollY * 0.06, 40);
+          mobileImageRef.current!.style.transform = `translate3d(0, ${offset}px, 0)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isMobile]);
+
+  /* =========================================================
+     DESKTOP: React-based scroll parallax
+     ========================================================= */
+  useEffect(() => {
+    if (isMobile) return;
+
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile]);
 
-  const scrollOffset = Math.min(
-    scrollY * (isMobile ? 0.06 : 0.12),
-    isMobile ? 40 : 80
-  );
+  const scrollOffset = Math.min(scrollY * 0.12, 80);
 
-  const parallaxOffset = Math.min(scrollY * 0.12, 80);
-
-  /* ---------- Pointer Tilt (desktop only) ---------- */
+  /* =========================================================
+     DESKTOP: Pointer tilt
+     ========================================================= */
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isMobile || !imageRef.current) return;
+    if (isMobile || !desktopImageRef.current) return;
 
-    const rect = imageRef.current.getBoundingClientRect();
+    const rect = desktopImageRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -53,81 +81,28 @@ export default function HeroBusinessSection({
 
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
-  return isMobile ? (
+  /* =========================================================
+     RENDER
+     ========================================================= */
+  return (
     <Box
       className="relative w-full overflow-hidden"
       sx={{
-        height: "80vh", // fixed hero height
+        height: { xs: "78vh", md: "80vh" },
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay */}
+      {/* Background tint */}
       <Box className="absolute inset-0 bg-black/10 z-0" />
 
-      {/* Text */}
-      <Box className="relative z-10 flex flex-col items-center pt-40 text-center px-6">
-        <Typography
-          variant="h1"
-          className="font-serif italic text-white"
-          sx={{ fontSize: { xs: "2.4rem", md: "4rem" } }}
-        >
-          {titleItalic}
-        </Typography>
-
-        <Typography
-          variant="h1"
-          className="mt-4 text-white"
-          sx={{ fontSize: { xs: "2.6rem", md: "4.5rem" } }}
-        >
-          {titleNormal}
-        </Typography>
-      </Box>
-
-      {/* Building crop window */}
-      <Box
-        className="
-          absolute
-          left-0
-          top-30
-          w-full
-          overflow-hidden
-        "
-        sx={{
-          height: "80vh", // fixed crop height
-        }}
-      >
-        <img
-          src={buildingImage}
-          alt="Building"
-          className="h-full w-full object-cover"
-          style={{
-            transform: `translateY(${parallaxOffset}px)`,
-            transition: "transform 0.05s linear",
-          }}
-        />
-      </Box>
-    </Box>
-  ) : (
-    <Box
-      className="relative w-full overflow-hidden"
-      sx={{
-        height: { xs: "72vh", md: "80vh" }, // 👈 mobile-safe height
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay */}
-      <Box className="absolute inset-0 bg-black/10 z-0" />
-
-      {/* TEXT — collision-controlled */}
+      {/* TEXT — collision-aligned */}
       <Box
         className="absolute z-20 w-full text-center px-6"
         sx={{
           top: {
-            xs: "clamp(14vh, 18vh, 22vh)", // 👈 gentler collision on mobile
+            xs: "clamp(16vh, 20vh, 24vh)",
             md: "clamp(18vh, 22vh, 26vh)",
           },
         }}
@@ -158,25 +133,30 @@ export default function HeroBusinessSection({
       {/* BUILDING IMAGE */}
       <Box
         className="absolute inset-0 z-10 overflow-hidden"
-        sx={{ perspective: isMobile ? "none" : "1200px" }}
+        sx={{
+          perspective: isMobile ? "none" : "1200px",
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         <img
-          ref={imageRef}
+          ref={isMobile ? mobileImageRef : desktopImageRef}
           src={buildingImage}
           alt="Building"
           className="h-full w-full object-cover"
           style={{
-            transform: `
-              scale(${isMobile ? 1.02 : 1.08})
-              translateY(${scrollOffset}px)
-              rotateX(${isMobile ? 0 : tilt.x}deg)
-              rotateY(${isMobile ? 0 : tilt.y}deg)
-            `,
-            transition: "transform 0.2s ease-out",
-            transformStyle: "preserve-3d",
+            transform: isMobile
+              ? "translate3d(0,0,0)"
+              : `
+                scale(1.08)
+                translateY(${scrollOffset}px)
+                rotateX(${tilt.x}deg)
+                rotateY(${tilt.y}deg)
+              `,
+            transition: isMobile ? "none" : "transform 0.18s ease-out",
             willChange: "transform",
+            transformStyle: "preserve-3d",
+            backfaceVisibility: "hidden",
           }}
         />
       </Box>
