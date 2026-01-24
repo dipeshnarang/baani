@@ -137,7 +137,7 @@ export default function StatsSection() {
         <Box className="font-serif text-4xl italic leading-tight">
           {renderAnimatedText(
             STATS_SECTION.header,
-            "h1",
+            "DmSerifH1",
             0,
             0.5 // HEADER FIRST
           )}
@@ -146,7 +146,7 @@ export default function StatsSection() {
         <Box className="max-w-3xl text-sm leading-relaxed">
           {renderAnimatedText(
             STATS_SECTION.description,
-            "body2",
+            "infoText",
             0.5,
             1 // DESCRIPTION AFTER HEADER
           )}

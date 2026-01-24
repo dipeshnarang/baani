@@ -46,10 +46,12 @@ let theme = createTheme({
     subtitle1: {
       fontSize: "2rem",
       fontWeight: 400,
+      fontFamily: "Ubuntu",
     },
     body1: {
       fontSize: "1.25rem",
       lineHeight: 1.2,
+      fontFamily: "Ubuntu",
     },
     body2: {
       fontSize: "1rem",
@@ -70,6 +72,7 @@ let theme = createTheme({
       fontWeight: 400,
       lineHeight: 1,
       letterSpacing: "-0.02em",
+      fontFamily: "Ubuntu",
     },
     numeric02: {
       fontSize: "2.25rem",
@@ -92,15 +95,27 @@ let theme = createTheme({
       fontFamily: "DM Sans",
     },
     locationHeader: {
-      fontSize: '1.75rem',
-      fontFamily: 'Ubuntu',
-      fontWeight: '500'
+      fontSize: "1.75rem",
+      fontFamily: "Ubuntu",
+      fontWeight: "500",
     },
     locationAddress: {
-      fontSize: '1rem',
-      fontFamily: 'Ubuntu',
-      fontWeight: '400'
-    }
+      fontSize: "1rem",
+      fontFamily: "Ubuntu",
+      fontWeight: "400",
+    },
+    headerNav: {
+      fontFamily: "Ubuntu",
+      fontWeight: 500,
+      fontSize: "1.4rem",
+      lineHeight: "1.8rem",
+    },
+    DmSerifH1: {
+      fontFamily: "DM Serif Text",
+      fontSize: "3.25rem",
+      fontWeight: 500,
+      lineHeight: 1.2,
+    },
   },
 
   spacing: (factor: number) => `${0.5 * factor}rem`,

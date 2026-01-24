@@ -18,7 +18,7 @@ const CarouselTextOverlayComponent = ({
           <Typography
             key={index}
             variant={isMobile ? "h4" : "imageOverlay"}
-            className="font-bold mb-2"
+            className="mb-2"
           >
             {title}
           </Typography>

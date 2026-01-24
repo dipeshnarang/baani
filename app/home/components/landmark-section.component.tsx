@@ -8,8 +8,8 @@ export default function LandmarkSection() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box className="mx-auto px-6 py-16 bg-[#F2F2F2] justify-center flex">
-      <Box className=" md:px-12 flex flex-col gap-8" sx={{}}>
+    <Box className="mx-auto px-6 py-16 bg-[#F2F2F2] justify-center flex ">
+      <Box className=" md:px-12 flex flex-col gap-8 overflow-auto">
         <Box>
           <Typography variant="h1" className="font-medium text-gray-900">
             {LANDMARK_SECTION.header[0]}{" "}

@@ -14,7 +14,7 @@ export const ContainedButton = styled((props: AnchorButtonProps) => (
 ))(({ theme }) => ({
   backgroundColor: "#000",
   color: "#fff",
-  width: "17rem",
+  maxWidth: "17rem",
   textDecoration: "none",
 
   "&:hover": {

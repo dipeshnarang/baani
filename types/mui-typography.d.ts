@@ -11,6 +11,8 @@ declare module "@mui/material/styles" {
     galleryHeader: React.CSSProperties;
     locationHeader: React.CSSProperties;
     locationAddress: React.CSSProperties;
+    headerNav: React.CSSProperties;
+    DmSerifH1: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -22,6 +24,8 @@ declare module "@mui/material/styles" {
     galleryHeader: React.CSSProperties;
     locationHeader: React.CSSProperties;
     locationAddress: React.CSSProperties;
+    headerNav: React.CSSProperties;
+    DmSerifH1: React.CSSProperties;
   }
 }
 
@@ -35,5 +39,7 @@ declare module "@mui/material/Typography" {
     galleryHeader: true;
     locationHeader: true;
     locationAddress: true;
+    headerNav: true;
+    DmSerifH1: true;
   }
 }

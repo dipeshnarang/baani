@@ -103,9 +103,11 @@ export default function Header() {
                     ? handleScrollNav(item.scrollTo)
                     : router.push(item.href!)
                 }
-                className="font-medium normal-case text-white hover:text-[#F5C518]"
+                className="text-white hover:text-[#F5C518]"
               >
-                <Typography color="primary.white">{item.label}</Typography>
+                <Typography variant="headerNav" color="primary.white">
+                  {item.label}
+                </Typography>
               </Button>
             ))}
           </Box>
@@ -116,9 +118,9 @@ export default function Header() {
             component={Link}
             href="/enquire"
             variant="contained"
-            className="inline-flex items-center gap-1.5 rounded-md bg-white px-5 py-2.5 font-semibold normal-case text-black transition hover:bg-gray-200"
+            className="inline-flex items-center gap-1.5 rounded-md bg-white px-5 py-2.5"
           >
-            Enquire Now
+            <Typography variant="infoText">Enquire Now</Typography>
             <ArrowOutwardIcon fontSize="small" />
           </Button>
         )}
