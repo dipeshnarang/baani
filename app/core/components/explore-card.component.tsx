@@ -13,15 +13,16 @@ export default function ExploreCard({
   image,
   title,
   subtitle,
-  link
+  link,
 }: ExploreCardProps) {
-    const router = useRouter()
+  const router = useRouter();
   return (
     <Box
       className="
-        relative h-[30rem] w-full sm:w-[25rem] flex-shrink-0
+        relative w-full sm:w-[32rem] flex-shrink-0
         overflow-hidden rounded-2xl group
       "
+      sx={{ aspectRatio: "107 / 120" }}
     >
       <Box
         className="
@@ -55,7 +56,7 @@ export default function ExploreCard({
             hover:bg-white
           "
           onClick={() => {
-            router.push(link)
+            router.push(link);
           }}
         >
           <ArrowOutwardIcon fontSize="small" />
