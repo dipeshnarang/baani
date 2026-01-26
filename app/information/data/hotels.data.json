@@ -50,7 +50,7 @@
       "location": {
         "title": "Double Tree by Hilton, Gurugram",
         "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
-        "coordinates": [28.4595, 77.0266]
+        "coordinates": [28.425869, 77.057253]
       }
     },
     {
@@ -101,9 +101,9 @@
         }
       ],
       "location": {
-        "title": "Double Tree by Hilton, Gurugram",
-        "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
-        "coordinates": [28.4595, 77.0266]
+        "title": "Hilton - Baani City Centre, Gurugram",
+        "address": "Baani City Center, Sector 63, Gurugram, Haryana 122101",
+        "coordinates": [28.399885, 77.086591]
       }
     }
   ]
