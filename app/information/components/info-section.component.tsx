@@ -17,6 +17,29 @@ interface ProjectInfoSectionProps {
   description: string;
 }
 
+/**
+ * Desktop image size: 535 x 600 px
+ * Aspect ratio: 107 / 120
+ */
+const IMAGE_CONTAINER_SX = {
+  width: "clamp(33.44rem, 35vw, 40rem)",
+  aspectRatio: "107 / 120",
+  marginRight: "2rem",
+  marginBottom: "1.5rem",
+};
+
+const LINE_HEIGHT = 1.6;
+const INFO_TEXT_FONT_SIZE = 16;
+const MOBILE_WORD_LIMIT = 150;
+
+function truncateWords(text: string, limit: number) {
+  const words = text.split(/\s+/);
+  return {
+    truncated: words.length > limit,
+    text: words.slice(0, limit).join(" "),
+  };
+}
+
 export default function ProjectInfoSection({
   image,
   logo,
@@ -27,237 +50,158 @@ export default function ProjectInfoSection({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const imageRef = useRef<HTMLDivElement | null>(null);
-  const descriptionRef = useRef<HTMLDivElement | null>(null);
-  const imageElementRef = useRef<HTMLImageElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
-  const [showReadMore, setShowReadMore] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [imageDimensions, setImageDimensions] = useState<{
-    width?: string;
-    height?: string;
-  }>({});
+  const [showReadMore, setShowReadMore] = useState(false);
 
-  /* ---------- Measure heights (only collapsed mode) ---------- */
+  /* ---------- Desktop overflow detection ---------- */
   useEffect(() => {
-    if (expanded) return;
+    if (isMobile) return;
+    if (!imageRef.current || !textRef.current) return;
 
-    const measure = () => {
-      if (!imageRef.current || !descriptionRef.current) return;
+    const imageHeight = imageRef.current.offsetHeight;
+    const textHeight = textRef.current.scrollHeight;
 
-      setShowReadMore(
-        descriptionRef.current.scrollHeight >
-          imageRef.current.offsetHeight - 300
-      );
+    setShowReadMore(textHeight > imageHeight);
+  }, [description, isMobile]);
 
-      // Store image dimensions for expanded view (only if not already stored)
-      if (imageRef.current && imageElementRef.current) {
-        const imgElement = imageElementRef.current;
-        const currentWidth =
-          imgElement.offsetWidth || imageRef.current.offsetWidth;
-        const currentHeight =
-          imgElement.offsetHeight || imageRef.current.offsetHeight;
+  /* ================= MOBILE LAYOUT ================= */
+  if (isMobile) {
+    const { truncated, text } = truncateWords(description, MOBILE_WORD_LIMIT);
 
-        if (currentWidth > 0 && currentHeight > 0) {
-          setImageDimensions((prev) =>
-            prev.width
-              ? prev
-              : {
-                  width: `${currentWidth}px`,
-                  height: `${currentHeight}px`,
-                }
-          );
-        }
-      }
-    };
+    return (
+      <Box className="bg-black px-6 pt-32 pb-10 text-white">
+        {/* Image */}
+        <Box
+          className="overflow-hidden rounded-3xl mb-6"
+          sx={{ aspectRatio: "107 / 120" }}
+        >
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        </Box>
 
-    // Small delay to ensure image is loaded
-    const timeoutId = setTimeout(measure, 100);
-    window.addEventListener("resize", measure);
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener("resize", measure);
-    };
-  }, [description, expanded]);
+        {/* Content */}
+        <img
+          src={logo}
+          alt={`${title} logo`}
+          className="h-12 mb-4 object-contain brightness-0 invert"
+        />
 
+        <Typography variant="h1" className="mb-4 font-serif">
+          {title}
+        </Typography>
+
+        <Typography
+          variant="infoText"
+          className="text-gray-300 leading-relaxed"
+        >
+          {expanded || !truncated ? description : `${text}…`}
+        </Typography>
+
+        {/* Actions */}
+        <Box className="mt-4">
+          {truncated && (
+            <Typography
+              variant="infoText"
+              onClick={() => setExpanded((v) => !v)}
+              className="cursor-pointer text-sm text-yellow-500 mb-4 inline-block"
+            >
+              {expanded ? "Read Less" : "Read More"}
+            </Typography>
+          )}
+
+          <Button
+            variant="contained"
+            endIcon={<ArrowOutwardIcon />}
+            className="bg-white text-black normal-case hover:bg-gray-200 w-full"
+          >
+            <Typography variant="body2">Schedule a Visit</Typography>
+          </Button>
+        </Box>
+      </Box>
+    );
+  }
+
+  /* ================= DESKTOP LAYOUT ================= */
   return (
-    <Box className="bg-black px-6 md:px-16 pt-40 pb-10">
-      <Box className="mx-auto text-white">
-        {/* ===== COLLAPSED: GRID LAYOUT ===== */}
-        {!expanded && (
-          <Box className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
-            {/* Image */}
-            <Box
-              ref={imageRef}
-              className="overflow-hidden rounded-3xl md:col-span-2"
-            >
-              <img
-                ref={imageElementRef}
-                src={image}
-                alt={title}
-                className={
-                  isMobile
-                    ? "h-[20rem] w-full"
-                    : "h-[35rem] w-full object-cover"
-                }
-                onLoad={() => {
-                  if (
-                    imageElementRef.current &&
-                    !expanded &&
-                    !imageDimensions.width
-                  ) {
-                    setImageDimensions({
-                      width: `${imageElementRef.current.offsetWidth}px`,
-                      height: `${imageElementRef.current.offsetHeight}px`,
-                    });
-                  }
-                }}
-              />
-            </Box>
+    <Box className="bg-black px-6 md:px-16 pt-40 pb-10 text-white">
+      <Box className="relative">
+        {/* ===== FLOATING IMAGE ===== */}
+        <Box
+          ref={imageRef}
+          className="float-left overflow-hidden rounded-3xl"
+          sx={{
+            ...IMAGE_CONTAINER_SX,
+            shapeOutside: "inset(0 round 24px)",
+            WebkitShapeOutside: "inset(0 round 24px)",
+          }}
+        >
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        </Box>
 
-            {/* Text */}
-            <Box className="md:col-span-3 flex flex-col gap-4 items-start py-4">
-              <img
-                src={logo}
-                alt={`${title} logo`}
-                className="h-14 object-contain brightness-0 invert"
-              />
-
-              <Typography variant="h1" className="mb-4 font-serif">
-                {title}
-              </Typography>
-
-              <Box
-                ref={descriptionRef}
-                className="overflow-hidden relative mb-4"
-                style={{
-                  maxHeight: imageRef.current?.offsetHeight
-                    ? imageRef.current.offsetHeight - 255
-                    : undefined,
-                }}
-              >
-                <Typography
-                  variant="infoText"
-                  className="leading-relaxed text-gray-300"
-                >
-                  {description}
-                </Typography>
-                {showReadMore && (
-                  <Box
-                    className="absolute bottom-0 right-0 text-gray-300 text-lg font-bold"
-                    style={{
-                      background:
-                        "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 60%, transparent 100%)",
-                      paddingLeft: "1.5rem",
-                      paddingRight: "0.25rem",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    ...
-                  </Box>
-                )}
-              </Box>
-
-              {showReadMore && (
-                <Typography
-                  variant="infoText"
-                  onClick={() => setExpanded(true)}
-                  className="mt-6 cursor-pointer text-sm text-yellow-500"
-                >
-                  Read More
-                </Typography>
-              )}
-
-              <Button
-                variant="contained"
-                endIcon={<ArrowOutwardIcon />}
-                className="bg-white text-black normal-case hover:bg-gray-200 w-full md:w-60"
-              >
-                <Typography variant="body2">Schedule a Visit</Typography>
-              </Button>
-            </Box>
-          </Box>
-        )}
-
-        {/* ===== EXPANDED: FLOAT (L-SHAPE) ===== */}
-        {expanded && (
-          <Box className="relative gap-4">
-            {/* Floating Image */}
-            <Box
-              ref={imageRef}
-              className="float-left mr-8 mb-6 overflow-hidden rounded-3xl flex-shrink-0"
-              style={{
-                width: imageDimensions.width || (isMobile ? "100%" : "40vw"),
-                height: imageDimensions.height || "auto",
-                maxWidth: imageDimensions.width || "40rem",
-              }}
-              sx={
-                !isMobile && imageDimensions.width
-                  ? {
-                      shapeOutside: "inset(0 round 24px)",
-                      WebkitShapeOutside: "inset(0 round 24px)",
-                    }
-                  : !isMobile
-                    ? {
-                        shapeOutside: "inset(0 round 24px)",
-                        WebkitShapeOutside: "inset(0 round 24px)",
-                      }
-                    : {}
-              }
-            >
-              <img
-                src={image}
-                alt={title}
-                className="h-full w-full object-cover"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            </Box>
-
-            {/* Text Flow */}
+        {/* ===== TEXT FLOW ===== */}
+        <Box
+          ref={textRef}
+          sx={{
+            maxHeight:
+              !expanded && imageRef.current
+                ? (() => {
+                    const imageHeight = imageRef.current.offsetHeight - 128; // 8rem
+                    const lineHeightPx = INFO_TEXT_FONT_SIZE * LINE_HEIGHT;
+                    const fullLines = Math.floor(imageHeight / lineHeightPx);
+                    return `${fullLines * lineHeightPx}px`;
+                  })()
+                : "none",
+            overflow: !expanded ? "hidden" : "visible",
+          }}
+        >
+          <Box sx={{ paddingTop: "2rem" }}>
             <img
               src={logo}
               alt={`${title} logo`}
               className="h-14 mb-4 object-contain brightness-0 invert"
             />
+          </Box>
 
-            <Typography variant="h1" className="mb-4 font-serif">
-              {title}
-            </Typography>
+          <Typography variant="h1" className="mb-4 font-serif">
+            {title}
+          </Typography>
 
+          <Typography
+            variant="infoText"
+            className="text-gray-300"
+            sx={{ lineHeight: LINE_HEIGHT }}
+          >
+            {description}
+          </Typography>
+        </Box>
+
+        {/* ===== ACTIONS ===== */}
+        <Box className="mt-2">
+          {showReadMore && (
             <Typography
               variant="infoText"
-              className="leading-relaxed text-gray-300"
+              onClick={() => setExpanded((v) => !v)}
+              className="cursor-pointer text-sm text-yellow-500 block mb-4"
             >
-              {description}
+              {expanded ? "Read Less" : "Read More"}
             </Typography>
+          )}
 
-            <Box className="mt-1">
-              <Typography
-                variant="infoText"
-                onClick={() => setExpanded(false)}
-                className="mt-6 cursor-pointer text-sm text-yellow-500"
-              >
-                Read Less
-              </Typography>
-            </Box>
+          <Box className="h-4" />
 
-            <Box className="mt-4">
-              <Button
-                variant="contained"
-                endIcon={<ArrowOutwardIcon />}
-                className="mt-8 bg-white text-black normal-case hover:bg-gray-200 w-full md:w-60"
-              >
-                <Typography variant="body2">Schedule a Visit</Typography>
-              </Button>
-            </Box>
+          <Button
+            variant="contained"
+            endIcon={<ArrowOutwardIcon />}
+            className="bg-white text-black normal-case hover:bg-gray-200"
+          >
+            <Typography variant="body2">Schedule a Visit</Typography>
+          </Button>
 
-            {/* Clear float */}
-            <Box className="clear-both" />
-          </Box>
-        )}
+          <Box sx={{ paddingBottom: "2rem" }} />
+        </Box>
+
+        <Box className="clear-both" />
       </Box>
     </Box>
   );
