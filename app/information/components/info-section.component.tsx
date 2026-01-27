@@ -124,7 +124,7 @@ export default function ProjectInfoSection({
 
   /* ================= DESKTOP LAYOUT ================= */
   return (
-    <Box className="bg-black px-6 md:px-16 pt-40 pb-10 text-white">
+    <Box className="bg-black px-6 md:px-16 pt-40 pb-10 text-white xl:px-24">
       <Box className="relative">
         {/* ===== FLOATING IMAGE ===== */}
         <Box

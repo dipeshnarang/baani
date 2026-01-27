@@ -69,7 +69,7 @@ export default function Header() {
       }}
       className="pt-2"
     >
-      <AppHeader>
+      <AppHeader className="px-4" sx={{}}>
         <Box className="mr-6 flex gap-2">
           {isMobile && (
             <IconButton

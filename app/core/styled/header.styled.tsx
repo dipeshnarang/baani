@@ -5,4 +5,5 @@ export const AppHeader = styled(Toolbar)({
   mx: "auto",
   display: "flex",
   justifyContent: "space-between",
+  padding: '1.2rem 3rem !important'
 });

@@ -21,8 +21,8 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <Box className="p-0">
-      <Box className="relative h-[80vh] w-full overflow-hidden">
+    <Box className="p-2.5">
+      <Box className="relative h-[80vh] w-full overflow-hidden rounded-[1.25rem]">
         {homeCarouselSlides.map((slide, index) => (
           <Box
             key={index}

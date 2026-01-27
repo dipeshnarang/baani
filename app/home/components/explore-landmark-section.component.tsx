@@ -42,9 +42,9 @@ export default function IconicLandmarksSection() {
             </Box>
             <Box>
               <ul className="mb-8 space-y-3 text-sm text-gray-700">
-                {EXPLORE_LANDMARK.pointers.map((pointer) => {
+                {EXPLORE_LANDMARK.pointers.map((pointer, index) => {
                   return (
-                    <li className="flex items-center gap-2">
+                    <li className="flex items-center gap-2" key={index}>
                       {pointer.icon}
                       {pointer.text}
                     </li>
