@@ -1,19 +1,32 @@
+import { Typography } from "@mui/material";
 import { Gem, Building, Pyramid, Rocket, UserStar } from "lucide-react";
 
 export const homeCarouselSlides = [
   {
     image: "/images/home-1.jpg",
-    title: ["Finest Work of Architecture", "with Ample Prospects"],
+    title: [
+      { text: "Finest", variant: "fontDmSansHeroMedium" },
+      { text: "Work of Architecture", variant: "fontDmSerifHeroRegularItalic" },
+      { text: "with Ample Prospects", variant: "fontDmSansHeroMedium" },
+    ],
     subtitle: ["Live your best life and find your perfect property"],
   },
   {
     image: "/images/the-corporate-one.jpg",
-    title: ["Finest Work of Architecture", "with Ample Prospects"],
+    title: [
+      { text: "Finest", variant: "fontDmSansHeroMedium" },
+      { text: "Work of Architecture", variant: "fontDmSerifHeroRegularItalic" },
+      { text: "with Ample Prospects", variant: "fontDmSansHeroMedium" },
+    ],
     subtitle: ["Live your best life and find your perfect property"],
   },
   {
     image: "/images/home-3.jpg",
-    title: ["Finest Work of Architecture", "with Ample Prospects"],
+    title: [
+      { text: "Finest", variant: "fontDmSansHeroMedium" },
+      { text: "Work of Architecture", variant: "fontDmSerifHeroRegularItalic" },
+      { text: "with Ample Prospects", variant: "fontDmSansHeroMedium" },
+    ],
     subtitle: ["Live your best life and find your perfect property"],
   },
 ];
@@ -89,19 +102,19 @@ export const EXPLORE_LANDMARK = {
   pointers: [
     {
       icon: <Gem strokeWidth={1.5} />,
-      text: "Premium High Street Retail and Service Apartments",
+      text: "Premium High Street Retail and Service Apartments.",
     },
     {
       icon: <Building strokeWidth={1.5} />,
-      text: "Luxurious Architectural Design",
+      text: "Luxurious Architectural Design.",
     },
     {
       icon: <Pyramid strokeWidth={1.5} />,
-      text: "Timeless landscapes with elegance",
+      text: "Timeless landscapes with elegance.",
     },
     {
       icon: <Rocket strokeWidth={1.5} />,
-      text: "Blend of Technology and Creativity",
+      text: "Blend of Technology and Creativity.",
     },
     {
       icon: <UserStar strokeWidth={1.5} />,

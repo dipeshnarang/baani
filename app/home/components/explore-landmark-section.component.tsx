@@ -10,12 +10,12 @@ export default function IconicLandmarksSection() {
   return (
     <Box className="mx-auto px-4 md:px-24 py-10 bg-[#FAFAFA]">
       {/* Header */}
-      <Box className="mb-14 text-center">
-        <Typography variant="h1" className="font-serif italic text-yellow-500">
+      <Box className="mb-14 text-center flex flex-col">
+        <Typography variant="fontDmSerifXlRegular" className="font-serif italic text-yellow-500">
           {EXPLORE_LANDMARK.header[0]}{" "}
           <span className="text-black">{EXPLORE_LANDMARK.header[1]}</span>
         </Typography>
-        <Typography variant="h1" className="font-semibold text-black">
+        <Typography variant="fontDmSerifXlRegular" className="font-semibold text-black">
           {EXPLORE_LANDMARK.subheader[0]}
         </Typography>
       </Box>
@@ -29,7 +29,7 @@ export default function IconicLandmarksSection() {
           <Box className="flex flex-col gap-6 rounded-3xl bg-white p-10 shadow-sm">
             <Box className="flex flex-col gap-4">
               <Typography
-                variant="h3"
+                variant="fontUbuntuMdMedium"
                 className="mb-2 font-semibold text-black"
               >
                 Experiential Landmarks Crafted

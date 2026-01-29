@@ -1,7 +1,8 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Fragment } from "react/jsx-runtime";
 
 interface CarouselTextOverlayComponentProps {
-  title: string[];
+  title: { text: string; variant: string }[];
   subtitle: string[];
 }
 
@@ -13,20 +14,23 @@ const CarouselTextOverlayComponent = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box className="flex flex-col gap-6 absolute bottom-[5%] md:bottom-[5%] left-[6%] md:left-[6%] text-white">
-      <Box className="flex flex-col">
-        {title.map((title, index) => (
-          <Typography
-            key={index}
-            variant={isMobile ? "h4" : "imageOverlay"}
-            className="mb-2"
-          >
-            {title}
-          </Typography>
+      <Box className="flex flex-wrap items-center gap-2">
+        {title.map((item, index) => (
+          <Fragment key={index}>
+            <Typography
+              variant={isMobile ? "h4" : (item.variant as any)}
+              className="mb-0"
+            >
+              {item.text}
+            </Typography>
+
+            {(index + 1) % 2 === 0 && <span className="w-full h-0" />}
+          </Fragment>
         ))}
       </Box>
 
       {subtitle.map((subtitle, index) => (
-        <Typography key={index} variant="body1" className="">
+        <Typography key={index} variant="fontUbuntuXsRegular" className="">
           {subtitle}
         </Typography>
       ))}

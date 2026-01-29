@@ -10,15 +10,23 @@ export default function LandmarkSection() {
   return (
     <Box className="mx-auto px-6 py-16 bg-[#F2F2F2] justify-center flex ">
       <Box className=" md:px-12 flex flex-col gap-8 overflow-auto">
-        <Box>
-          <Typography variant="h1" className="font-medium text-gray-900">
-            {LANDMARK_SECTION.header[0]}{" "}
-            <span className="font-serif italic text-yellow-500">
+        <Box className="flex flex-col">
+          <Box>
+            <Typography variant="fontDmSansXlMedium" className="text-gray-900">
+              {LANDMARK_SECTION.header[0]}{" "}
+            </Typography>
+            <Typography
+              variant="fontDmSerifXlRegular"
+              className="italic text-yellow-500"
+            >
               {LANDMARK_SECTION.header[1]}
-            </span>
-          </Typography>
+            </Typography>
+          </Box>
 
-          <Typography variant="h1" className="font-medium text-gray-900">
+          <Typography
+            variant="fontDmSansXlMedium"
+            className="font-medium text-gray-900"
+          >
             {LANDMARK_SECTION.subheader[0]}
           </Typography>
         </Box>

@@ -134,19 +134,19 @@ export default function StatsSection() {
     >
       {/* ---------- TEXT ---------- */}
       <Box className="flex flex-col gap-8 items-center text-center">
-        <Box className="font-serif text-4xl italic leading-tight">
+        <Box className="">
           {renderAnimatedText(
             STATS_SECTION.header,
-            "DmSerifH1",
+            "fontDmSerifXlRegular",
             0,
             0.5 // HEADER FIRST
           )}
         </Box>
 
-        <Box className="max-w-3xl text-sm leading-relaxed">
+        <Box className="max-w-3xl leading-relaxed">
           {renderAnimatedText(
             STATS_SECTION.description,
-            "infoText",
+            "fontUbuntuXsRegular",
             0.5,
             1 // DESCRIPTION AFTER HEADER
           )}
@@ -162,7 +162,7 @@ export default function StatsSection() {
           <Box key={index} className="flex flex-col items-center">
             <Box className="mb-6 h-px w-full bg-gray-200" />
 
-            <Typography variant="numeric01" color="black">
+            <Typography variant="fontUbuntu3xlRegular" color="black">
               {counts[index]}
             </Typography>
 

@@ -13,6 +13,26 @@ declare module "@mui/material/styles" {
     locationAddress: React.CSSProperties;
     headerNav: React.CSSProperties;
     DmSerifH1: React.CSSProperties;
+
+    fontUbuntuXsRegular: React.CSSProperties;
+    fontUbuntuXsMedium: React.CSSProperties;
+    fontUbuntuSmMedium: React.CSSProperties;
+    fontUbuntuSmRegular: React.CSSProperties;
+    fontUbuntuBaseMedium: React.CSSProperties;
+    fontUbuntuMdMedium: React.CSSProperties;
+    fontUbuntuLgMedium: React.CSSProperties;
+    fontUbuntuLgBold: React.CSSProperties;
+    fontUbuntu3xlRegular: React.CSSProperties;
+
+    fontDmSansXsRegular: React.CSSProperties;
+    fontDmSansSmMedium: React.CSSProperties;
+    fontDmSansXlMedium: React.CSSProperties;
+    fontDmSansHeroMedium: React.CSSProperties;
+
+    fontDmSerifXlRegular: React.CSSProperties;
+    fontDmSerifXlRegularItalic: React.CSSProperties;
+    fontDmSerifHeroRegularItalic: React.CSSProperties;
+    fontDmSerifDisplayRegular: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -26,6 +46,26 @@ declare module "@mui/material/styles" {
     locationAddress: React.CSSProperties;
     headerNav: React.CSSProperties;
     DmSerifH1: React.CSSProperties;
+
+    fontUbuntuXsRegular: React.CSSProperties;
+    fontUbuntuXsMedium: React.CSSProperties;
+    fontUbuntuSmMedium: React.CSSProperties;
+    fontUbuntuSmRegular: React.CSSProperties;
+    fontUbuntuBaseMedium: React.CSSProperties;
+    fontUbuntuMdMedium: React.CSSProperties;
+    fontUbuntuLgMedium: React.CSSProperties;
+    fontUbuntuLgBold: React.CSSProperties;
+    fontUbuntu3xlRegular: React.CSSProperties;
+
+    fontDmSansXsRegular: React.CSSProperties;
+    fontDmSansSmMedium: React.CSSProperties;
+    fontDmSansXlMedium: React.CSSProperties;
+    fontDmSansHeroMedium: React.CSSProperties;
+
+    fontDmSerifXlRegular: React.CSSProperties;
+    fontDmSerifXlRegularItalic: React.CSSProperties;
+    fontDmSerifHeroRegularItalic: React.CSSProperties;
+    fontDmSerifDisplayRegular: React.CSSProperties;
   }
 }
 
@@ -41,5 +81,25 @@ declare module "@mui/material/Typography" {
     locationAddress: true;
     headerNav: true;
     DmSerifH1: true;
+    
+    fontUbuntuXsRegular: true;
+    fontUbuntuXsMedium: true;
+    fontUbuntuSmMedium: true;
+    fontUbuntuSmRegular: true;
+    fontUbuntuBaseMedium: true;
+    fontUbuntuMdMedium: true;
+    fontUbuntuLgMedium: true;
+    fontUbuntuLgBold: true;
+    fontUbuntu3xlRegular: true
+
+    fontDmSansXsRegular: true;
+    fontDmSansSmMedium: true;
+    fontDmSansXlMedium: true;
+    fontDmSansHeroMedium: true;
+
+    fontDmSerifXlRegular: true;
+    fontDmSerifXlRegularItalic: true;
+    fontDmSerifHeroRegularItalic: true;
+    fontDmSerifDisplayRegular: true;
   }
 }

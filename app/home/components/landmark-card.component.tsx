@@ -16,7 +16,7 @@ export default function LandmarkCard({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
-      className={`rounded-3xl bg-white p-8 shadow-sm h-[29rem] ${isMobile ? "w-full" : "w-[21rem]"}`}
+      className={`rounded-3xl bg-white p-8 shadow-sm h-[29rem] ${isMobile ? "w-full" : "w-[23rem]"}`}
     >
       {/* Image */}
       <Box className="mb-10 flex justify-center">
@@ -29,15 +29,15 @@ export default function LandmarkCard({
         />
       </Box>
 
-      <Box className="flex flex-col gap-4">
+      <Box className="flex flex-col gap-2">
         <Typography
-          variant="cardHeader"
+          variant="fontUbuntuLgBold"
           className="font-semibold text-gray-900"
         >
           {title}
         </Typography>
 
-        <Typography variant="body2" className="leading-relaxed text-gray-600">
+        <Typography variant="fontUbuntuSmRegular" className="text-gray-600">
           {description}
         </Typography>
       </Box>

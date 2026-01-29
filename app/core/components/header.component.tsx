@@ -105,7 +105,7 @@ export default function Header() {
                 }
                 className="text-white hover:text-[#F5C518]"
               >
-                <Typography variant="headerNav" color="primary.white">
+                <Typography variant="fontUbuntuXsMedium" color="primary.white">
                   {item.label}
                 </Typography>
               </Button>
@@ -120,7 +120,7 @@ export default function Header() {
             variant="contained"
             className="inline-flex items-center gap-1.5 rounded-md bg-white px-5 py-2.5"
           >
-            <Typography variant="infoText">Enquire Now</Typography>
+            <Typography variant="fontUbuntuSmMedium">Enquire Now</Typography>
             <ArrowOutwardIcon fontSize="small" />
           </Button>
         )}

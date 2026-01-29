@@ -60,11 +60,11 @@ export default function ExploreSection() {
       className="mx-auto px-6 pb-14 bg-white scroll-mt-24"
       id="explore-section"
     >
-      <Box className="mb-12 text-center">
-        <Typography variant="h1" color="black">
+      <Box className="mb-12 text-center flex flex-col">
+        <Typography variant="fontDmSansXlMedium" color="black">
           {EXPLORE_SECTION.header}
         </Typography>
-        <Typography variant="h1" className="font-serif italic text-yellow-500">
+        <Typography variant="fontDmSansXlMedium" className="italic text-yellow-500">
           {EXPLORE_SECTION.subHeader}
         </Typography>
       </Box>

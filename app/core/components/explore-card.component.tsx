@@ -39,11 +39,11 @@ export default function ExploreCard({
 
       <Box className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
-      <Box className="absolute bottom-4 left-4 z-10">
-        <Typography className="text-lg font-semibold text-white">
+      <Box className="absolute bottom-4 left-4 z-10 flex flex-col gap-2">
+        <Typography variant="fontUbuntuMdMedium" className="font-semibold text-white">
           {title}
         </Typography>
-        <Typography className="text-sm text-gray-300">{subtitle}</Typography>
+        <Typography variant="fontUbuntuSmRegular" className="text-gray-300">{subtitle}</Typography>
       </Box>
 
       <Box className="absolute bottom-4 right-4 z-10 bg-white rounded-full">

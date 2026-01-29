@@ -1,4 +1,6 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { dmSans, ubuntu, dmSerif } from "./fonts";
+
 
 let theme = createTheme({
   palette: {
@@ -115,6 +117,123 @@ let theme = createTheme({
       fontSize: "3.25rem",
       fontWeight: 500,
       lineHeight: 1.2,
+    },
+
+
+    fontUbuntuXsRegular: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.2rem",
+      fontWeight: 400,
+      lineHeight: "1rem",
+    },
+    fontUbuntuXsMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.2rem",
+      fontWeight: 500,
+      lineHeight: "1rem",
+    },
+    fontUbuntuSmMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1rem",
+      fontWeight: 500,
+      lineHeight: "1rem",
+    },
+    fontUbuntuSmRegular: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.25rem",
+      fontWeight: 400,
+      lineHeight: "1.75rem",
+      letterSpacing: '-0.36px'
+    },
+    fontUbuntuBaseMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.5rem",
+      fontWeight: 500,
+      lineHeight: "100%",
+    },
+    fontUbuntuMdMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.75rem",
+      fontWeight: 500,
+      lineHeight: "1.75rem",
+    },
+    fontUbuntuLgMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "2rem",
+      fontWeight: 500,
+      lineHeight: "3.75rem",
+    },
+    fontUbuntuLgBold: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "2rem",
+      fontWeight: 700,
+      lineHeight: "3.75rem",
+    },
+    fontUbuntu3xlRegular: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "6.25rem",
+      fontWeight: 400,
+      lineHeight: "3.75rem",
+    },
+  
+    /* ================================
+       DM Sans
+    ================================= */
+    fontDmSansXsRegular: {
+      fontFamily: dmSans.style.fontFamily,
+      fontSize: "1rem",
+      fontWeight: 400,
+      lineHeight: "1rem",
+    },
+    fontDmSansSmMedium: {
+      fontFamily: "DM Sans",
+      fontSize: "1.25rem",
+      fontWeight: 500,
+      lineHeight: "1.75rem",
+    },
+    fontDmSansXlMedium: {
+      fontFamily: "DM Sans",
+      fontSize: "3.25rem",
+      fontWeight: 400,
+      lineHeight: "3.75rem",
+      letterSpacing: '-2.2px'
+    },
+    fontDmSansHeroMedium: {
+      fontFamily: dmSans.style.fontFamily,
+      fontSize: "3.75rem",
+      fontWeight: 500,
+      lineHeight: "4.5rem",
+    },
+  
+    /* ================================
+       DM Serif Text
+    ================================= */
+    fontDmSerifXlRegular: {
+      fontFamily: dmSerif.style.fontFamily,
+      fontSize: "3.25rem",
+      fontWeight: 400,
+      lineHeight: "3.75rem",
+      fontStyle: 'italic'
+    },
+    fontDmSerifXlRegularItalic: {
+      fontFamily: dmSerif.style.fontFamily,
+      fontSize: "3.25rem",
+      fontWeight: 400,
+      lineHeight: "3.75rem",
+      fontStyle: 'italic'
+    },
+    fontDmSerifHeroRegularItalic: {
+      fontFamily: dmSerif.style.fontFamily,
+      fontSize: "3.75rem",
+      fontWeight: 400,
+      lineHeight: "3.75rem",
+      fontStyle: 'italic'
+    },
+    fontDmSerifDisplayRegular: {
+      fontFamily: dmSerif.style.fontFamily,
+      fontSize: "6.25rem",
+      fontWeight: 400,
+      lineHeight: "4.5rem",
     },
   },
 

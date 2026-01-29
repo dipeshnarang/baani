@@ -11,6 +11,7 @@ export default function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
+    <Box className='bg-white' sx={{border: '1px solid white'}}>
     <Box
       className="bg-black px-4 py-10 m-2.5 rounded-3xl"
       sx={{
@@ -84,6 +85,7 @@ export default function Footer() {
           height={100}
         />
       </Box>
+    </Box>
     </Box>
   );
 }
