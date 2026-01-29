@@ -124,7 +124,7 @@ let theme = createTheme({
       fontFamily: ubuntu.style.fontFamily,
       fontSize: "1.2rem",
       fontWeight: 400,
-      lineHeight: "1rem",
+      lineHeight: "1.2rem",
     },
     fontUbuntuXsMedium: {
       fontFamily: ubuntu.style.fontFamily,

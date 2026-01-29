@@ -18,7 +18,9 @@ const CarouselTextOverlayComponent = ({
         {title.map((item, index) => (
           <Fragment key={index}>
             <Typography
-              variant={isMobile ? "h4" : (item.variant as any)}
+              variant={
+                isMobile ? "fontUbuntuBaseMedium" : (item.variant as any)
+              }
               className="mb-0"
             >
               {item.text}
