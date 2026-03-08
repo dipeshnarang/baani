@@ -46,7 +46,7 @@ export default function HowToReachSection({
 
         <Box className="flex flex-col justify-center gap-4">
           <Box className="flex flex-col gap-2">
-            <Typography variant="locationHeader">{title}</Typography>
+            <Typography variant="locationHeader" className="text-black">{title}</Typography>
             <Typography variant="locationAddress" className="text-gray-600">{address}</Typography>
           </Box>
 
