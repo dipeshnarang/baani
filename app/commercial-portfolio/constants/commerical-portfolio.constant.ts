@@ -20,20 +20,20 @@ export const COMMERCIAL_PORTFOLIO = [
     link: "",
   },
   {
-    image: "/images/baani-square.png",
+    image: "/images/the-statement.jpg",
     title: "The Statement",
     subtitle: "Golf Course Road, Gurugram",
     link: "",
   },
   {
-    image: "/images/baani-square.png",
+    image: "/images/baani-square-day.jpg",
     title: "Baani Square",
     subtitle: "Sector - 50",
     link: "",
   },
   {
     image: "/images/xchanging-271.jpg",
-    title: "Xchanging 271",
+    title: "Baani 271",
     subtitle: "Udyog Vihar Phase II, Gurugram",
     link: "",
   },
