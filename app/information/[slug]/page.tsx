@@ -39,6 +39,7 @@ export default async function InformationPage({ params }: PageProps) {
         title={hotel.location.title}
         address={hotel.location.address}
         coordinates={hotel.location.coordinates as [number, number]}
+        placeId={hotel.location.placeId as string}
       />
 
       <Footer />

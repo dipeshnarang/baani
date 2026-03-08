@@ -50,7 +50,8 @@
       "location": {
         "title": "Double Tree by Hilton, Gurugram",
         "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
-        "coordinates": [28.425869, 77.057253]
+        "coordinates": [28.425869, 77.057253],
+        "placeId": "ChIJq6qqqn0iDTkR17rjodfbJvw"
       }
     },
     {
@@ -103,7 +104,234 @@
       "location": {
         "title": "Hilton - Baani City Centre, Gurugram",
         "address": "Baani City Center, Sector 63, Gurugram, Haryana 122101",
-        "coordinates": [28.399885, 77.086591]
+        "coordinates": [28.399885, 77.086591],
+        "placeId": "ChIJ6UhqFjwiDTkRKqH_jrxVEiE"
+      }
+    },
+    {
+      "slug": "the-corporate-one",
+      "info": {
+        "image": "/images/corporate-one/corporate-one-4.png",
+        "logo": "/images/baani-logo.png",
+        "title": "The Corporate One",
+        "description": "Baani Corporate One is a new-generation project, which has all modern facilities and amenities. Not just strategic location, Jasola has promising infrastructure as compared to other commercial zones in South Delhi with improving connectivity. There are multiple property options and types available for investment in Baani Corporate One, which caters to various budget ranges. This project has all major facilities to offer to cater to all kinds of working professionals.  Additionally, there are other conveniences available here such as a  Cafeteria, Food Court, 24/7 Power Backup, etc."
+      },
+      "gallery": {
+        "images": [
+          "/images/corporate-one/corporate-one-4.png",
+          "/images/corporate-one/corporate-one-2.jpg",
+          "/images/corporate-one/corporate-one-3.jpg",
+          "/images/corporate-one/corporate-one-1.jpg",
+          "/images/corporate-one/corporate-one-5.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "The Corporate One",
+        "address": "Jasola Vihar, New Delhi, Delhi 110025",
+        "coordinates": [28.399885, 77.086591],
+        "placeId": "ChIJhWjeIgDkDDkRD3rU5ke-xP4"
+      }
+    },
+    {
+      "slug": "baani-square",
+      "info": {
+        "image": "/images/baani-square/baani-square-day.jpg",
+        "logo": "/images/baani-logo.png",
+        "title": "Baani Square",
+        "description": "Baani Square is located in sector 50. This project is a High Street Retail destination. Baani Square is spread across 3 acres of landscape and set amidst lush greenery. The project is wonderfully planned with stylish cafes, multi-cuisine restaurants, recreational facilities and more. With its corner location and modern architectural design, Baani Square offers high visibility and a refreshing experience to shoppers. This contemporary development made out of concrete, stone, steel and glass stands on the 90M wide main Nirvana road next to a five-star hotel."
+      },
+      "gallery": {
+        "images": [
+          "/images/baani-square/baani-square-day.jpg",
+          "/images/baani-square/baani-square-1.jpg",
+          "/images/baani-square/baani-square-2.png",
+          "/images/baani-square/baani-square-4.jpg",
+          "/images/baani-square/baani-square-5.png"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Baani Square",
+        "address": "Baani square, South City II, Sector 50, Gurugram, Haryana 122018",
+        "coordinates": [28.425869, 77.057253],
+        "placeId": "CChIJ37BntdYjDTkR-IWrUC-y4tk"
+      }
+    },
+    {
+      "slug": "the-statement",
+      "info": {
+        "image": "/images/the-statement/the-statement.jpg",
+        "logo": "/images/baani-logo.png",
+        "title": "The Statement",
+        "description": "A modern glass finished office building, Baani The Statement is located on Golf Course Road, Sector 43, Gurugram. The office building is located under 0.5 Kilometer away from the Sector 42-43 Rapid Metro Station and closer to the very prime location that makes people's daily trips so easy and stress-free. Built for any type of business, it provides a professional working environment alongside comfort."
+      },
+      "gallery": {
+        "images": [
+          "/images/the-statement/the-statement.jpg",
+          "/images/the-statement/statement-1.png",
+          "/images/the-statement/statement-2.png",
+          "/images/the-statement/statement-3.png",
+          "/images/the-statement/statement-4.jpg",
+          "/images/the-statement/statement-5.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "The Statement",
+        "address": "Golf Course Road, Sector 43 Gurgaon",
+        "coordinates": [28.4550, 77.0985], 
+        "placeId": "ChIJiSsl-9EZDTkRMeusU8GKxCc"
+      }
+    },
+    {
+      "slug": "address-one",
+      "info": {
+        "image": "/images/address-one/address-one-4.png",
+        "logo": "/images/baani-logo.png",
+        "title": "Address One",
+        "description": "Baani The Address One is a high-end commercial complex set on the Golf Course Road in Sector 56, Gurgaon. The structure has a design such that it offers it to be a workplace of the modern and most effective type, which is also the reason it is at the top of the list of every company that needs a prestigious address in Gurgaon. Baani The Address is an ideal choice for organizations that require a super high-end and modern commercial space in Gurgaon owing to its strategic location as it is conveniently placed near all the key business hubs, retail outlets, and dining options."
+      },
+      "gallery": {
+        "images": [
+          "/images/address-one/address-one-4.png",
+          "/images/address-one/address-one-2.jpg",
+          "/images/address-one/address-one-3.jpg",
+          "/images/address-one/address-one-1.jpg",
+          "/images/address-one/address-one-5.jpg",
+          "/images/address-one/address-one-6.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/built-area.png",
+          "title": "2,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/rooftop-pool.png",
+          "title": "Rooftop pool",
+          "subtitle": "24x7 Pavillion pantry"
+        },
+        {
+          "icon": "/images/gym.png",
+          "title": "24x7 Fitness Center",
+          "subtitle": "by precor"
+        },
+        {
+          "icon": "/images/key.png",
+          "title": "201 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/bar.png",
+          "title": "Rooftop bar &",
+          "subtitle": "Infinity pool"
+        },
+        {
+          "icon": "/images/location.png",
+          "title": "Sector 50, Gurugram",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Address One",
+        "address": "Baani, 1, Vigyan Vihar, Sector 56, Gurugram, Ghata, Haryana 122011",
+        "coordinates": [28.4276, 77.0656], 
+        "placeId": "ChIJp0oJ5vghDTkRorKVC3rdito"
       }
     }
   ]
