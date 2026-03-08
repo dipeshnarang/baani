@@ -16,14 +16,21 @@ export default function ExploreCard({
   link,
 }: ExploreCardProps) {
   const router = useRouter();
+
+  const handleClick = () => {
+    router.push(link);
+  };
+
   return (
     <Box
+      onClick={handleClick}
       className="
         relative w-full sm:w-[32rem] flex-shrink-0
-        overflow-hidden rounded-2xl group
+        overflow-hidden rounded-2xl group cursor-pointer
       "
       sx={{ aspectRatio: "107 / 120" }}
     >
+      {/* Background Image */}
       <Box
         className="
           absolute inset-0
@@ -37,15 +44,23 @@ export default function ExploreCard({
         }}
       />
 
+      {/* Gradient */}
       <Box className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
+      {/* Text */}
       <Box className="absolute bottom-4 left-4 z-10 flex flex-col gap-2">
-        <Typography variant="fontUbuntuMdMedium" className="font-semibold text-white">
+        <Typography
+          variant="fontUbuntuMdMedium"
+          className="font-semibold text-white"
+        >
           {title}
         </Typography>
-        <Typography variant="fontUbuntuSmRegular" className="text-gray-300">{subtitle}</Typography>
+        <Typography variant="fontUbuntuSmRegular" className="text-gray-300">
+          {subtitle}
+        </Typography>
       </Box>
 
+      {/* Icon */}
       <Box className="absolute bottom-4 right-4 z-10 bg-white rounded-full">
         <IconButton
           size="small"
@@ -55,7 +70,8 @@ export default function ExploreCard({
             text-gray-800
             hover:bg-white
           "
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation(); // prevents double trigger
             router.push(link);
           }}
         >

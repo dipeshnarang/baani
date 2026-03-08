@@ -2,6 +2,7 @@
 
 import { Box, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 interface PictureGallerySectionProps {
   images: string[];
@@ -31,9 +32,52 @@ export default function PictureGallerySection({
   }, [images]);
 
   return (
-    <Box className="relative bg-black py-24 overflow-hidden">
+    <Box className="relative bg-black pb-24 pt-8 overflow-hidden">
       {/* HEADER */}
-      <Box className="mb-16 text-center flex flex-col">
+      {/* <Box
+        className="mb-16 text-center flex flex-col"
+        sx={{ border: "1px solid red" }}
+      >
+        <Typography variant="galleryHeader" className="font-medium text-white">
+          Highlights and
+        </Typography>
+
+        <Typography variant="galleryHeader" className="italic text-yellow-500">
+          Picture Gallery
+        </Typography>
+      </Box> */}
+
+      <Box
+        className="relative pt-6 mb-16 flex flex-col items-center text-center"
+      >
+        {/* Top Image */}
+        <Image
+          src="/images/background/picture-top.png"
+          alt="top decoration"
+          width={600}
+          height={400}
+          className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none"
+        />
+
+        {/* Left Image */}
+        <Image
+          src="/images/background/picture-left.png"
+          alt="left decoration"
+          width={270}
+          height={274}
+          className="absolute left-0 -top-25 pointer-events-none"
+        />
+
+        {/* Right Image */}
+        <Image
+          src="/images/background/picture-left.png"
+          alt="left decoration"
+          width={270}
+          height={274}
+          className="absolute right-0 -top-25 pointer-events-none"
+        />
+
+        {/* Header Text */}
         <Typography variant="galleryHeader" className="font-medium text-white">
           Highlights and
         </Typography>
