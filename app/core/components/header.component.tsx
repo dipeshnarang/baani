@@ -57,6 +57,20 @@ export default function Header() {
     if (isMobile) setAnchorEl(event.currentTarget);
   };
 
+  useEffect(() => {
+    const updateScroll = () => setScrolled(window.scrollY > 40);
+  
+    updateScroll();
+  
+    window.addEventListener("scroll", updateScroll);
+    window.addEventListener("hashchange", updateScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("hashchange", updateScroll);
+    };
+  }, []);
+
   const handleMenuClose = () => setAnchorEl(null);
 
   return (

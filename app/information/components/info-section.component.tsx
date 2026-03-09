@@ -124,7 +124,7 @@ export default function ProjectInfoSection({
 
   /* ================= DESKTOP LAYOUT ================= */
   return (
-    <Box className="bg-black px-6 md:px-16 pt-40 pb-10 text-white xl:px-24">
+    <Box className="bg-black px-6 md:pl-16 md:pr-20 pt-40 pb-10 text-white xl:pl-24 xl:pr-28">
       <Box className="relative">
         {/* ===== FLOATING IMAGE ===== */}
         <Box
@@ -159,7 +159,7 @@ export default function ProjectInfoSection({
             <img
               src={logo}
               alt={`${title} logo`}
-              className="h-14 mb-4 object-contain brightness-0 invert"
+              className="h-14 mb-6 object-contain brightness-0 invert"
             />
           </Box>
 
@@ -169,7 +169,7 @@ export default function ProjectInfoSection({
 
           <Typography
             variant="infoText"
-            className="text-gray-300"
+            className="text-gray-300 mt-2"
             sx={{ lineHeight: LINE_HEIGHT }}
           >
             {description}
@@ -177,7 +177,7 @@ export default function ProjectInfoSection({
         </Box>
 
         {/* ===== ACTIONS ===== */}
-        <Box className="mt-2">
+        <Box className="mt-4">
           {showReadMore && (
             <Typography
               variant="infoText"
