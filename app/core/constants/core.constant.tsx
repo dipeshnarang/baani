@@ -3,13 +3,14 @@ export const FOOTER_CONTENT = {
   quickLinks: {
     header: ["Quick", "Links"],
     items: [
-      { icon: "", label: "Home" },
-      { icon: "", label: "About" },
-      { icon: "", label: "The Team" },
-      { icon: "", label: "Verticals" },
-      { icon: "", label: "News & Updates" },
-      { icon: "", label: "Contact Us" },
-      { icon: "", label: "Commercial Projects" },
+      { icon: "", label: "Home", href: "/" },
+      // { icon: "", label: "About", link: "/about" },
+      // { icon: "", label: "The Team", link: "/the-team" },
+      // { icon: "", label: "Verticals", link: "/verticals" },
+      // { icon: "", label: "News & Updates", link: "/news-and-updates" },
+      // { icon: "", label: "Contact Us", link: "/contact-us" },
+      { icon: "", label: "Commercial Portfolio", href: "/commercial-portfolio" },
+      { icon: "", label: "Hotel Collection", scrollTo: "explore-section" },
     ],
   },
   contact: {
