@@ -17,11 +17,11 @@ export const FOOTER_CONTENT = {
     address: {
       title: "Corporate Address",
       description: [
-        "271 Phase II, Udyog Vihar, Gurugram,",
-        "Haryana, 122016, India",
+        "Unit No. 4&5, First Floor, Block A,",
+        "Baani City Center, Sector-63,Gurugram -122101,Haryana",
       ],
     },
     email: "info@baani.com",
-    mobile: "+91-124-4222264",
+    mobile: "0124-5022264",
   },
 };
