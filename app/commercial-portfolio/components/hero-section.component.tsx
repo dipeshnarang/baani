@@ -86,7 +86,7 @@ export default function HeroBusinessSection({
      ========================================================= */
   return (
     <Box
-      className="relative w-full overflow-hidden rounded-xl"
+      className="relative w-full overflow-hidden rounded-[1.25rem]"
       sx={{
         height: { xs: "78vh", md: "80vh" },
         backgroundImage: `url(${backgroundImage})`,
