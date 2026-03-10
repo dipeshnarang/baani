@@ -8,7 +8,7 @@ import { COMMERCIAL_PORTFOLIO } from "./constants/commerical-portfolio.constant"
 
 export default function Home() {
   return (
-    <Box className="bg-white">
+    <Box className="bg-white p-2.5">
       <Header />
       <HeroBusinessSection
         backgroundImage="/images/blue-bg.png"

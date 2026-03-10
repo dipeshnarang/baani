@@ -21,7 +21,7 @@ export const homeCarouselSlides = [
     subtitle: ["Live your best life and find your perfect property"],
   },
   {
-    image: "/images/home-3.jpg",
+    image: "/images/baani-271.jpg",
     title: [
       { text: "Finest", variant: "fontDmSansHeroMedium" },
       { text: "Work of Architecture", variant: "fontDmSerifHeroRegularItalic" },
@@ -89,7 +89,7 @@ export const EXPLORE_LANDMARK = {
   header: ["Elevating the Cityscape", "with"],
   subheader: ["Iconic Landmarks"],
   imageList: [
-    "/images/xchanging-271.jpg",
+    "/images/baani-271.jpg",
     "/images/l-3.jpg",
     "/images/l-4.jpg",
     "/images/l-5.jpg",
