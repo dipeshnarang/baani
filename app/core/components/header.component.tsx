@@ -130,7 +130,7 @@ export default function Header() {
         {!isMobile && (
           <Button
             component={Link}
-            href="/enquire"
+            href=""
             variant="contained"
             className="inline-flex items-center gap-1.5 rounded-md bg-white px-5 py-2.5"
           >
