@@ -52,7 +52,7 @@ export default function IconicLandmarksSection() {
                 })}
               </ul>
             </Box>
-            <ContainedButton variant="contained" endIcon={<ArrowOutwardIcon />}>
+            <ContainedButton variant="contained" endIcon={<ArrowOutwardIcon />} href="/commercial-portfolio">
               Explore commercial portfolio
             </ContainedButton>
           </Box>
