@@ -17,7 +17,7 @@ export default function Home() {
       <ExploreSection />
       <LandmarkSection />
       <IconicLandmarksSection />
-      <PdfDocSection />
+      {/* <PdfDocSection /> */}
       <Footer />
     </Box>
   );
