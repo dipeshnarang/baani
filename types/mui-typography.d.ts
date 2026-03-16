@@ -28,6 +28,7 @@ declare module "@mui/material/styles" {
     fontDmSansSmMedium: React.CSSProperties;
     fontDmSansXlMedium: React.CSSProperties;
     fontDmSansHeroMedium: React.CSSProperties;
+    fontDmSansXlMediumBold: React.CSSProperties;
 
     fontDmSerifXlRegular: React.CSSProperties;
     fontDmSerifXlRegularItalic: React.CSSProperties;
@@ -61,6 +62,7 @@ declare module "@mui/material/styles" {
     fontDmSansSmMedium: React.CSSProperties;
     fontDmSansXlMedium: React.CSSProperties;
     fontDmSansHeroMedium: React.CSSProperties;
+    fontDmSansXlMediumBold: React.CSSProperties;
 
     fontDmSerifXlRegular: React.CSSProperties;
     fontDmSerifXlRegularItalic: React.CSSProperties;
@@ -96,10 +98,12 @@ declare module "@mui/material/Typography" {
     fontDmSansSmMedium: true;
     fontDmSansXlMedium: true;
     fontDmSansHeroMedium: true;
+    fontDmSansXlMediumBold: true;
 
     fontDmSerifXlRegular: true;
     fontDmSerifXlRegularItalic: true;
     fontDmSerifHeroRegularItalic: true;
     fontDmSerifDisplayRegular: true;
+
   }
 }

@@ -198,6 +198,13 @@ let theme = createTheme({
       lineHeight: "3.75rem",
       letterSpacing: '-2.2px'
     },
+    fontDmSansXlMediumBold: {
+      fontFamily: "DM Sans",
+      fontSize: "3.25rem",
+      fontWeight: 500,
+      lineHeight: "3.75rem",
+      letterSpacing: '-2.2px'
+    },
     fontDmSansHeroMedium: {
       fontFamily: dmSans.style.fontFamily,
       fontSize: "3.75rem",

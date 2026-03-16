@@ -4,6 +4,7 @@ import StatsSection from "@/home/components/stats-section.component";
 import ExploreSection from "@/home/components/explore-section.component";
 import LandmarkSection from "./home/components/landmark-section.component";
 import IconicLandmarksSection from "./home/components/explore-landmark-section.component";
+import PdfDocSection from "./home/components/pdf-section.component";
 import Footer from "./core/components/footer.component";
 import { Box } from "@mui/material";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <ExploreSection />
       <LandmarkSection />
       <IconicLandmarksSection />
+      <PdfDocSection />
       <Footer />
     </Box>
   );
