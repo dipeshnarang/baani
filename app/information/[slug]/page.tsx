@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-
 import Header from "@/core/components/header.component";
 import Footer from "@/core/components/footer.component";
 
@@ -7,6 +6,7 @@ import ProjectInfoSection from "../components/info-section.component";
 import PictureGallerySection from "../components/picture-gallery.component";
 import FacilitiesSection from "../components/facilities-section.component";
 import HowToReachSection from "../components/reach-location-section.component";
+import SustainableBanner from "../components/pfd-banner.component";
 
 import data from "../data/hotels.data.json";
 
@@ -18,7 +18,6 @@ interface PageProps {
 
 export default async function InformationPage({ params }: PageProps) {
   const { slug } = await params; // ✅ REQUIRED
-
   const hotel = data.hotels.find((h) => h.slug === slug);
 
   if (!hotel) {
@@ -41,6 +40,8 @@ export default async function InformationPage({ params }: PageProps) {
         coordinates={hotel.location.coordinates as [number, number]}
         placeId={hotel.location.placeId as string}
       />
+      {hotel.documents.length >= 1 && <SustainableBanner documents={hotel.documents} />
+      }
 
       <Footer />
     </>

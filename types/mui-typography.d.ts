@@ -18,6 +18,7 @@ declare module "@mui/material/styles" {
     fontUbuntuXsMedium: React.CSSProperties;
     fontUbuntuSmMedium: React.CSSProperties;
     fontUbuntuSmRegular: React.CSSProperties;
+    fontUbuntuSmRegularMedium: React.CSSProperties;
     fontUbuntuBaseMedium: React.CSSProperties;
     fontUbuntuMdMedium: React.CSSProperties;
     fontUbuntuLgMedium: React.CSSProperties;
@@ -52,6 +53,7 @@ declare module "@mui/material/styles" {
     fontUbuntuXsMedium: React.CSSProperties;
     fontUbuntuSmMedium: React.CSSProperties;
     fontUbuntuSmRegular: React.CSSProperties;
+    fontUbuntuSmRegularMedium: React.CSSProperties;
     fontUbuntuBaseMedium: React.CSSProperties;
     fontUbuntuMdMedium: React.CSSProperties;
     fontUbuntuLgMedium: React.CSSProperties;
@@ -88,6 +90,7 @@ declare module "@mui/material/Typography" {
     fontUbuntuXsMedium: true;
     fontUbuntuSmMedium: true;
     fontUbuntuSmRegular: true;
+    fontUbuntuSmRegularMedium: true;
     fontUbuntuBaseMedium: true;
     fontUbuntuMdMedium: true;
     fontUbuntuLgMedium: true;

@@ -52,7 +52,8 @@
         "address": "Baani Square, Pocket C, Mayfield Garden, Sector 50, Gurugram, Haryana 122018",
         "coordinates": [28.425869, 77.057253],
         "placeId": "ChIJq6qqqn0iDTkR17rjodfbJvw"
-      }
+      },
+      "documents": []
     },
     {
       "slug": "hilton-baani-city-centre",
@@ -106,7 +107,8 @@
         "address": "Baani City Center, Sector 63, Gurugram, Haryana 122101",
         "coordinates": [28.399885, 77.086591],
         "placeId": "ChIJ6UhqFjwiDTkRKqH_jrxVEiE"
-      }
+      },
+      "documents": []
     },
     {
       "slug": "the-corporate-one",
@@ -162,7 +164,21 @@
         "address": "Jasola Vihar, New Delhi, Delhi 110025",
         "coordinates": [28.399885, 77.086591],
         "placeId": "ChIJhWjeIgDkDDkRD3rU5ke-xP4"
-      }
+      },
+      "documents": [
+        {
+          "title": "Copy of Environmental Clearance (EC)",
+          "file": "/pdfs/environmental-clearance.pdf"
+        },
+        {
+          "title": "Form - V (2024-2025)",
+          "file": "/pdfs/form-v-2024-2025.pdf"
+        },
+        {
+          "title": "Six-Month Compliance Reports",
+          "file": "/pdfs/six-month-compliance.pdf"
+        }
+      ]
     },
     {
       "slug": "baani-square",
@@ -218,7 +234,8 @@
         "address": "Baani square, South City II, Sector 50, Gurugram, Haryana 122018",
         "coordinates": [28.425869, 77.057253],
         "placeId": "CChIJ37BntdYjDTkR-IWrUC-y4tk"
-      }
+      },
+      "documents": []
     },
     {
       "slug": "the-statement",
@@ -275,7 +292,8 @@
         "address": "Golf Course Road, Sector 43 Gurgaon",
         "coordinates": [28.4550, 77.0985], 
         "placeId": "ChIJiSsl-9EZDTkRMeusU8GKxCc"
-      }
+      },
+      "documents": []
     },
     {
       "slug": "address-one",
@@ -332,7 +350,8 @@
         "address": "Baani, 1, Vigyan Vihar, Sector 56, Gurugram, Ghata, Haryana 122011",
         "coordinates": [28.4276, 77.0656], 
         "placeId": "ChIJp0oJ5vghDTkRorKVC3rdito"
-      }
+      },
+      "documents": []
     }
   ]
 }

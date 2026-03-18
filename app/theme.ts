@@ -145,6 +145,13 @@ let theme = createTheme({
       lineHeight: "1.75rem",
       letterSpacing: '-0.36px'
     },
+    fontUbuntuSmRegularMedium: {
+      fontFamily: ubuntu.style.fontFamily,
+      fontSize: "1.25rem",
+      fontWeight: 400,
+      lineHeight: "1.75rem",
+      letterSpacing: '-0.36px'
+    },
     fontUbuntuBaseMedium: {
       fontFamily: ubuntu.style.fontFamily,
       fontSize: "1.5rem",
