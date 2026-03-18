@@ -18,7 +18,7 @@ export default function SustainableBannerWithModal({ documents }: Props) {
     const [open, setOpen] = useState(false);
 
     return (
-        <Box className='mb-8'>
+        <Box className='mb-8 bg-white'>
             {/* BANNER */}
             <Box
                 className="
