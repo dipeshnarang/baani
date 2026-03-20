@@ -1,18 +1,18 @@
 export const HERO_IMAGE_URL = "";
 
 export const COMMERCIAL_PORTFOLIO = [
-  {
-    image: "/images/baani-city-centre.png",
-    title: "Baani City Centre",
-    subtitle: "Sector - 63",
-    link: "/information/hilton-baani-city-centre",
-  },
-  {
-    image: "/images/double-tree-hilton.jpg",
-    title: "Double Tree by Hilton",
-    subtitle: "Sector - 50",
-    link: "/information/double-tree-by-hilton",
-  },
+  // {
+  //   image: "/images/baani-city-centre.png",
+  //   title: "Baani City Centre",
+  //   subtitle: "Sector - 63",
+  //   link: "/information/hilton-baani-city-centre",
+  // },
+  // {
+  //   image: "/images/double-tree-hilton.jpg",
+  //   title: "Double Tree by Hilton",
+  //   subtitle: "Sector - 50",
+  //   link: "/information/double-tree-by-hilton",
+  // },
   {
     image: "/images/the-corporate-one.jpg",
     title: "The Corporate One",
