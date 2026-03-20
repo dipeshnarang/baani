@@ -49,7 +49,7 @@ export default function FacilitiesSection({
               </Box>
 
               <Box className="flex flex-col gap-1">
-                <Typography className="font-semibold text-black">
+                <Typography variant='fontUbuntuBaseMedium' className="text-black">
                   {item.title}
                 </Typography>
 

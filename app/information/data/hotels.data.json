@@ -201,7 +201,7 @@
         {
           "icon": "/images/icons/car-parking.png",
           "title": "Car Parking",
-          "subtitle": "by precor"
+          "subtitle": ""
         },
         {
           "icon": "/images/icons/park-green-area.png",
@@ -211,7 +211,7 @@
         {
           "icon": "/images/icons/restaurants.png",
           "title": "Restaurants",
-          "subtitle": "Infinity pool"
+          "subtitle": ""
         }
       ],
       "location": {
