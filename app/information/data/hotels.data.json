@@ -73,23 +73,23 @@
         },
         {
           "icon": "/images/icons/rooftop-pool.png",
-          "title": "Rooftop pool",
-          "subtitle": "24x7 Pavillion pantry"
+          "title": "Outdoor Pool",
+          "subtitle": ""
         },
         {
           "icon": "/images/icons/fitness-center.png",
           "title": "24x7 Fitness Center",
-          "subtitle": "by precor"
-        },
-        {
-          "icon": "/images/icons/room-key.png",
-          "title": "201 Keys Rooms & Suites",
           "subtitle": ""
         },
         {
-          "icon": "/images/icons/rooftop-bar.png",
-          "title": "Rooftop bar &",
-          "subtitle": "Infinity pool"
+          "icon": "/images/icons/room-key.png",
+          "title": "223 Keys Rooms & Suites",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/executive-lounge.png",
+          "title": "Executive Lounges",
+          "subtitle": ""
         }
       ],
       "location": {
