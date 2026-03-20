@@ -23,8 +23,8 @@ export default function LandmarkCard({
         <Image
           src={image}
           alt={title}
-          width={224}
-          height={224}
+          width={474}
+          height={474}
           className=" object-contain"
         />
       </Box>

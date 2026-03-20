@@ -67,17 +67,17 @@ export const LANDMARK_SECTION = {
   subheader: ["across urban landscapes"],
   landmarks: [
     {
-      image: "/images/retail-new.png",
+      image: "/images/retail-1.png",
       title: "Retail",
       description: "Spaces enabling seamless business–customer interaction.",
     },
     {
-      image: "/images/office-new.png",
+      image: "/images/office-1.png",
       title: "Offices",
       description: "Environments that ignite productivity and elevate success.",
     },
     {
-      image: "/images/hotel-new.png",
+      image: "/images/hotel-1.png",
       title: "Hotels",
       description:
         "Properties meticulously crafted to enrich every moment of your stay.",

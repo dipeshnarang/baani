@@ -17,34 +17,29 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
+          "icon": "/images/icons/built-up-area.png",
           "title": "2,50,000 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
+          "icon": "/images/icons/rooftop-pool.png",
           "title": "Rooftop pool",
           "subtitle": "24x7 Pavillion pantry"
         },
         {
-          "icon": "/images/gym.png",
+          "icon": "/images/icons/fitness-center.png",
           "title": "24x7 Fitness Center",
           "subtitle": "by precor"
         },
         {
-          "icon": "/images/key.png",
+          "icon": "/images/icons/room-key.png",
           "title": "201 Keys Rooms & Suites",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
+          "icon": "/images/icons/rooftop-bar.png",
           "title": "Rooftop bar &",
           "subtitle": "Infinity pool"
-        },
-        {
-          "icon": "/images/location.png",
-          "title": "Sector 50, Gurugram",
-          "subtitle": ""
         }
       ],
       "location": {
@@ -72,34 +67,29 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
+          "icon": "/images/icons/built-up-area.png",
           "title": "2,50,000 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
+          "icon": "/images/icons/rooftop-pool.png",
           "title": "Rooftop pool",
           "subtitle": "24x7 Pavillion pantry"
         },
         {
-          "icon": "/images/gym.png",
+          "icon": "/images/icons/fitness-center.png",
           "title": "24x7 Fitness Center",
           "subtitle": "by precor"
         },
         {
-          "icon": "/images/key.png",
+          "icon": "/images/icons/room-key.png",
           "title": "201 Keys Rooms & Suites",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
+          "icon": "/images/icons/rooftop-bar.png",
           "title": "Rooftop bar &",
           "subtitle": "Infinity pool"
-        },
-        {
-          "icon": "/images/location.png",
-          "title": "Sector 63, Gurugram",
-          "subtitle": ""
         }
       ],
       "location": {
@@ -129,33 +119,33 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
-          "title": "2,50,000 Sq. Ft.",
+          "icon": "/images/icons/built-up-area.png",
+          "title": "87,120 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
-          "title": "Rooftop pool",
-          "subtitle": "24x7 Pavillion pantry"
-        },
-        {
-          "icon": "/images/gym.png",
-          "title": "24x7 Fitness Center",
-          "subtitle": "by precor"
-        },
-        {
-          "icon": "/images/key.png",
-          "title": "201 Keys Rooms & Suites",
+          "icon": "/images/icons/power-backup.png",
+          "title": "24x7 Power Backup",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
-          "title": "Rooftop bar &",
-          "subtitle": "Infinity pool"
+          "icon": "/images/icons/park-green-area.png",
+          "title": "Park and Green Area",
+          "subtitle": ""
         },
         {
-          "icon": "/images/location.png",
-          "title": "Jasola Vihar, New Delhi",
+          "icon": "/images/icons/grade-a-building.png",
+          "title": "Grade A Building",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/food-court.png",
+          "title": "Food Court",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/car-parking.png",
+          "title": "Car Parking",
           "subtitle": ""
         }
       ],
@@ -199,34 +189,29 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
-          "title": "2,50,000 Sq. Ft.",
+          "icon": "/images/icons/built-up-area.png",
+          "title": "1,30,680 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
-          "title": "Rooftop pool",
-          "subtitle": "24x7 Pavillion pantry"
+          "icon": "/images/icons/high-street-retail-market.png",
+          "title": "High Street Retail Market",
+          "subtitle": ""
         },
         {
-          "icon": "/images/gym.png",
-          "title": "24x7 Fitness Center",
+          "icon": "/images/icons/car-parking.png",
+          "title": "Car Parking",
           "subtitle": "by precor"
         },
         {
-          "icon": "/images/key.png",
-          "title": "201 Keys Rooms & Suites",
+          "icon": "/images/icons/park-green-area.png",
+          "title": "Park and Green Area",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
-          "title": "Rooftop bar &",
+          "icon": "/images/icons/restaurants.png",
+          "title": "Restaurants",
           "subtitle": "Infinity pool"
-        },
-        {
-          "icon": "/images/location.png",
-          "title": "Sector 50, Gurugram",
-          "subtitle": ""
         }
       ],
       "location": {
@@ -257,33 +242,28 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
-          "title": "2,50,000 Sq. Ft.",
+          "icon": "/images/icons/built-up-area.png",
+          "title": "1,35,000 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
-          "title": "Rooftop pool",
-          "subtitle": "24x7 Pavillion pantry"
-        },
-        {
-          "icon": "/images/gym.png",
-          "title": "24x7 Fitness Center",
-          "subtitle": "by precor"
-        },
-        {
-          "icon": "/images/key.png",
-          "title": "201 Keys Rooms & Suites",
+          "icon": "/images/icons/conference-rooms.png",
+          "title": "Conference Rooms",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
-          "title": "Rooftop bar &",
-          "subtitle": "Infinity pool"
+          "icon": "/images/icons/power-backup.png",
+          "title": "24x7 Power Backup",
+          "subtitle": ""
         },
         {
-          "icon": "/images/location.png",
-          "title": "Sector 43, Gurugram",
+          "icon": "/images/icons/24-7-security.png",
+          "title": "24x7 Security",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/lifts-and-parking.png",
+          "title": "Lifts and Parking",
           "subtitle": ""
         }
       ],
@@ -315,33 +295,33 @@
       },
       "facilities": [
         {
-          "icon": "/images/built-area.png",
+          "icon": "/images/icons/built-up-area.png",
           "title": "2,50,000 Sq. Ft.",
           "subtitle": "Built up area"
         },
         {
-          "icon": "/images/rooftop-pool.png",
-          "title": "Rooftop pool",
-          "subtitle": "24x7 Pavillion pantry"
-        },
-        {
-          "icon": "/images/gym.png",
-          "title": "24x7 Fitness Center",
-          "subtitle": "by precor"
-        },
-        {
-          "icon": "/images/key.png",
-          "title": "201 Keys Rooms & Suites",
+          "icon": "/images/icons/conference-rooms.png",
+          "title": "Conference Rooms",
           "subtitle": ""
         },
         {
-          "icon": "/images/bar.png",
-          "title": "Rooftop bar &",
-          "subtitle": "Infinity pool"
+          "icon": "/images/icons/power-backup.png",
+          "title": "24x7 Power Backup",
+          "subtitle": ""
         },
         {
-          "icon": "/images/location.png",
-          "title": "Sector 56, Gurugram",
+          "icon": "/images/icons/grade-a-building.png",
+          "title": "Grade A Building",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/food-court.png",
+          "title": "Cafeteria / Food Court",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/high-street-retail-market.png",
+          "title": "High Street Retail Market",
           "subtitle": ""
         }
       ],

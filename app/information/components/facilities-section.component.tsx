@@ -32,17 +32,22 @@ export default function FacilitiesSection({
         </Box>
 
         {/* Facilities Grid */}
-        <Box className="grid grid-cols-1 gap-y-20 gap-x-12 sm:grid-cols-2 md:grid-cols-3">
+        <Box className="flex flex-wrap justify-center gap-x-12 gap-y-20">
           {facilities.map((item, index) => (
-            <Box key={index} className="flex flex-col items-center text-center">
+            <Box
+              key={index}
+              className="flex flex-col items-center text-center 
+                 w-full sm:w-[45%] md:w-[30%]"
+            >
               {/* Icon */}
-              <Box className="mb-6 h-24 w-24">
+              <Box className="h-48 w-48">
                 <img
                   src={item.icon}
                   alt={item.title}
                   className="h-full w-full object-contain"
                 />
               </Box>
+
               <Box className="flex flex-col gap-1">
                 <Typography className="font-semibold text-black">
                   {item.title}
