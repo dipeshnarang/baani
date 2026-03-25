@@ -10,9 +10,11 @@
       },
       "gallery": {
         "images": [
-          "/images/hilton-sec-50/1.jpg",
-          "/images/hilton-sec-50/2.png",
-          "/images/hilton-sec-50/3.jpg"
+          "/images/hilton-double-tree-sec-50/1.png",
+          "/images/hilton-double-tree-sec-50/2.png",
+          "/images/hilton-double-tree-sec-50/3.png",
+          "/images/hilton-double-tree-sec-50/4.png",
+          "/images/hilton-double-tree-sec-50/5.png"
         ]
       },
       "facilities": [
