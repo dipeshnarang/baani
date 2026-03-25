@@ -60,9 +60,11 @@
       },
       "gallery": {
         "images": [
-          "/images/hilton-sec-50/1.jpg",
-          "/images/hilton-sec-50/2.png",
-          "/images/hilton-sec-50/3.jpg"
+          "/images/hilton-baani-city-center/hilton-baani-city-center-1.png",
+          "/images/hilton-baani-city-center/hilton-baani-city-center-2.png",
+          "/images/hilton-baani-city-center/hilton-baani-city-center-3.png",
+          "/images/hilton-baani-city-center/hilton-baani-city-center-4.png",
+          "/images/hilton-baani-city-center/hilton-baani-city-center-5.png"
         ]
       },
       "facilities": [
