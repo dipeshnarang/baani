@@ -5,6 +5,7 @@
       "info": {
         "image": "/images/double-tree-hilton.jpg",
         "logo": "/images/hilton-logo.png",
+        "invertLogo": true,
         "title": "Double Tree by Hilton",
         "description": "DoubleTree by Hilton Gurugram Baani Square (Asset, 100% owned by Baani Group) at Baani Square is located near the prime corporate, commercial and residential districts in Gurugram, Delhi NCR. This grand hotel is just a 10-minute drive from DLF Cyber City, which is a central business and entertainment hub. The guest rooms & suites at the hotel offer brilliant facilities that include complimentary high-speed internet access and, a hospitality centre with a mini refrigerator & coffee/tea maker. The lush lawns and the courtyard surrounding the hotel are perfectly suited for business events, social gatherings, private receptions and weddings."
       },
@@ -57,6 +58,7 @@
       "info": {
         "image": "/images/baani-city-centre.png",
         "logo": "/images/city-center-logo.png",
+        "invertLogo": true,
         "title": "Hilton - Baani City Centre",
         "description": "Baani City Center is strategically located at Sector 63, Gurugram. The project offers High-Street Retail, a Food Court and service Apartments. Baani City Center offers you the opportunity to enjoy an international lifestyle at your doorstep. With its modern and trendy European appeal, Baani City Center brings you a world of choices in premium retail, living and hospitality. The Retail space offered is designed to cater to both national and international brands & the food court has ample space for assorted food outlets.Baani City Center is situated amidst the fastest-growing Golf Course Zone in Gurugram and witnesses maximum footfall."
       },
@@ -329,6 +331,100 @@
         "address": "Baani, 1, Vigyan Vihar, Sector 56, Gurugram, Ghata, Haryana 122011",
         "coordinates": [28.4276, 77.0656], 
         "placeId": "ChIJp0oJ5vghDTkRorKVC3rdito"
+      },
+      "documents": []
+    },
+    {
+      "slug": "baani-271",
+      "info": {
+        "image": "/images/baani-271/baani-271-main.jpg",
+        "logo": "/images/baani-271/baani-271-logo.png",
+        "title": "Baani 271",
+        "description": "Baani 271 – (Asset, 100% owned by Baani Group) Xchanging is the perfect space for an office that is crafted with a blend of technology and creativity. The project redefines the workspace and encompasses all aspects of work life and technology. This project exemplifies a wonderful space where people can indulge in creativity within a work environment."
+      },
+      "gallery": {
+        "images": [
+          "/images/baani-271/baani-271-1.jpg",
+          "/images/baani-271/baani-271-2.jpg",
+          "/images/baani-271/baani-271-3.jpg",
+          "/images/baani-271/baani-271-4.jpg",
+          "/images/baani-271/baani-271-5.jpg"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/icons/built-up-area.png",
+          "title": "1,10,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/icons/conference-rooms.png",
+          "title": "Conference Rooms",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/office-space.png",
+          "title": "Perfect for office space",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Baani 271",
+        "address": "Dundahera Village, 271, Udyog Vihar II Rd, Udyog Vihar, Sector 20, Gurugram, Haryana 122016",
+        "coordinates": [28.5015, 77.0875], 
+        "placeId": "ChIJWxspEf8hDTkRJaKW_rhOCTs"
+      },
+      "documents": []
+    },
+    {
+      "slug": "baani-center-point",
+      "info": {
+        "image": "/images/baani-center-point/center-point-main.jpg",
+        "logo": "/images/baani-center-point/center-point-logo.png",
+        "title": "Baani Center Point",
+        "description": "Baani Center Point is a destination for people who aspire to be the best in life. The project is located on National Highway 8. The lower floors of the Retail arcade at BaaniCenter Point have a food court and restaurants, whereas the above levels are dedicated to the well-planned multiplex. Centre Point is sure to become a major cinema destination with the multiplex being operated by one of the leading multiplex chains in the country. This mixed-use commercial development will be a destination for shopping, entertainment and dining on the main highway between Gurugram and Manesar. This modern contemporary development, which is made of concrete, stone, steel and glass, stands on the 150 M wide lifeline -the NH8."
+      },
+      "gallery": {
+        "images": [
+          "/images/baani-center-point/center-point-main.jpg",
+          "/images/baani-center-point/center-point-1.jpg",
+          "/images/baani-center-point/center-point-2.png",
+          "/images/baani-center-point/center-point-3.png",
+          "/images/baani-center-point/center-point-4.png"
+        ]
+      },
+      "facilities": [
+        {
+          "icon": "/images/icons/built-up-area.png",
+          "title": "5,50,000 Sq. Ft.",
+          "subtitle": "Built up area"
+        },
+        {
+          "icon": "/images/icons/high-street-retail-market.png",
+          "title": "High Street Retail Market",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/car-parking.png",
+          "title": "Car Parking",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/park-green-area.png",
+          "title": "Park and Green Area",
+          "subtitle": ""
+        },
+        {
+          "icon": "/images/icons/restaurants.png",
+          "title": "Restaurants",
+          "subtitle": ""
+        }
+      ],
+      "location": {
+        "title": "Baani Center Point",
+        "address": "Sector 80 (Sector M1D), NH-8, Gurugram, Haryana 122051",
+        "coordinates": [28.3125, 76.9248], 
+        "placeId": "ChIJAd7vWgw9DTkR6EgrKCC9TMg"
       },
       "documents": []
     }

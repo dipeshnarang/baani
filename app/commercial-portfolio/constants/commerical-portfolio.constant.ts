@@ -37,4 +37,16 @@ export const COMMERCIAL_PORTFOLIO = [
     subtitle: "Sector - 56, Gurugram",
     link: "/information/address-one",
   },
+  {
+    image: "/images/baani-271/baani-271-main.jpg",
+    title: "Baani 271",
+    subtitle: "Udyog Vihar Phase II, Gurugram.",
+    link: "/information/baani-271",
+  },
+  {
+    image: "/images/baani-center-point/center-point-main.jpg",
+    title: "Baani Center Point",
+    subtitle: "Sector 80 (Sector M1D), Gurugram.",
+    link: "/information/baani-center-point",
+  }
 ];

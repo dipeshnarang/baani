@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 interface ProjectInfoSectionProps {
   image: string;
   logo: string;
+  invertLogo?: boolean;
   title: string;
   description: string;
 }
@@ -43,6 +44,7 @@ function truncateWords(text: string, limit: number) {
 export default function ProjectInfoSection({
   image,
   logo,
+  invertLogo,
   title,
   description,
 }: ProjectInfoSectionProps) {
@@ -159,7 +161,7 @@ export default function ProjectInfoSection({
             <img
               src={logo}
               alt={`${title} logo`}
-              className="h-14 mb-6 object-contain brightness-0 invert"
+              className={`h-14 mb-6 object-contain ${invertLogo ? 'brightness-0 invert' : '' }`}
             />
           </Box>
 
