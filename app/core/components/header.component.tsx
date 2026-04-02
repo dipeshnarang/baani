@@ -18,6 +18,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { AppHeader } from "@/core/styled/header.styled";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { usePathname, useRouter } from "next/navigation";
+import EnquireNowModal from "./enquire-now.component";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -32,6 +33,12 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const pathname = usePathname();
   const router = useRouter();
+
+  const [openEnquireNow, setOpenEnquireNow] = useState(false)
+
+  const onCloseEnquireNow = () => {
+    setOpenEnquireNow(false)
+  }
 
   const handleScrollNav = (sectionId: string) => {
     if (pathname === "/") {
@@ -133,6 +140,7 @@ export default function Header() {
             href=""
             variant="contained"
             className="inline-flex items-center gap-1.5 rounded-md bg-white px-5 py-2.5"
+            onClick={() => setOpenEnquireNow(true)}
           >
             <Typography variant="fontUbuntuSmMedium">Enquire Now</Typography>
             <ArrowOutwardIcon fontSize="small" />
@@ -175,11 +183,14 @@ export default function Header() {
               </MenuItem>
             ))}
 
-            <MenuItem key="enquire now" component={Link} href="">
+            <MenuItem key="enquire now" component={Link} href="" onClick={() => {
+              setOpenEnquireNow(true)
+            }}>
               Enquire Now
             </MenuItem>
           </Menu>
         )}
+        <EnquireNowModal open={openEnquireNow} onClose={onCloseEnquireNow}/>
       </AppHeader>
     </AppBar>
   );
