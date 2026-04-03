@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
     Dialog,
     DialogContent,
@@ -9,13 +9,14 @@ import {
     TextField,
     Button,
     Box,
-    MenuItem,
     CircularProgress,
-    Fade,
     useMediaQuery,
     useTheme,
+    Zoom,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 
 interface EnquireNowModalProps {
     open: boolean;
@@ -23,15 +24,6 @@ interface EnquireNowModalProps {
     title?: string;
     subtitle?: string;
 }
-
-const propertyOptions = [
-    "Office Space",
-    "Retail Space",
-    "Commercial Property",
-    "Leasing Inquiry",
-    "Investment Opportunity",
-    "General Inquiry",
-];
 
 export default function EnquireNowModal({
     open,
@@ -41,13 +33,11 @@ export default function EnquireNowModal({
 }: EnquireNowModalProps) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     const [form, setForm] = useState({
         fullName: "",
         email: "",
-        // phone: "",
-        // company: "",
-        // propertyInterest: "",
         message: "",
     });
 
@@ -57,6 +47,12 @@ export default function EnquireNowModal({
         "idle"
     );
     const [serverError, setServerError] = useState("");
+
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) clearTimeout(timerRef.current);
+        };
+    }, []);
 
     const handleChange =
         (field: keyof typeof form) =>
@@ -75,7 +71,7 @@ export default function EnquireNowModal({
                     }));
                 }
 
-                if (submitState !== "idle") {
+                if (submitState === "error") {
                     setSubmitState("idle");
                     setServerError("");
                 }
@@ -96,12 +92,6 @@ export default function EnquireNowModal({
             newErrors.email = "Enter a valid email address";
         }
 
-        // if (!form.phone.trim()) {
-        //     newErrors.phone = "Phone number is required";
-        // } else if (!/^[0-9+\-\s()]{7,20}$/.test(form.phone.trim())) {
-        //     newErrors.phone = "Enter a valid phone number";
-        // }
-
         if (form.message.trim().length > 1000) {
             newErrors.message = "Message should be under 1000 characters";
         }
@@ -114,24 +104,25 @@ export default function EnquireNowModal({
         setForm({
             fullName: "",
             email: "",
-            // phone: "",
-            // company: "",
-            // propertyInterest: "",
             message: "",
         });
         setErrors({});
-        setSubmitState("idle");
         setServerError("");
     };
 
     const handleClose = () => {
         if (!loading) {
+            if (timerRef.current) clearTimeout(timerRef.current);
+            setSubmitState("idle");
+            setServerError("");
             onClose();
         }
     };
 
     const handleSubmit = async () => {
         if (!validate()) return;
+
+        if (timerRef.current) clearTimeout(timerRef.current);
 
         setLoading(true);
         setSubmitState("idle");
@@ -152,20 +143,29 @@ export default function EnquireNowModal({
                 throw new Error(data?.error || "Failed to send enquiry");
             }
 
+            // show success overlay first
             setSubmitState("success");
             resetForm();
 
-            // Auto-close after success
-            setTimeout(() => {
+            // keep success popup on top for 3 sec, then close both together
+            timerRef.current = setTimeout(() => {
+                setSubmitState("idle");
                 onClose();
-            }, 2200);
+            }, 3000);
         } catch (error: any) {
             setSubmitState("error");
-            setServerError(error?.message || "Something went wrong. Please try again.");
+            setServerError(error?.message || "Try again after sometime");
+
+            // keep error popup for 3 sec, keep modal open
+            timerRef.current = setTimeout(() => {
+                setSubmitState("idle");
+                setServerError("");
+            }, 3000);
         } finally {
             setLoading(false);
         }
     };
+
     const textFieldSx = {
         "& .MuiOutlinedInput-root": {
             "& fieldset": {
@@ -181,7 +181,7 @@ export default function EnquireNowModal({
         },
         "& .MuiInputLabel-root": {
             color: "#777777",
-            fontSize: '10'
+            fontSize: "10px",
         },
         "& .MuiInputLabel-root.Mui-focused": {
             color: "#111111",
@@ -189,7 +189,15 @@ export default function EnquireNowModal({
         "& .MuiInputLabel-root.Mui-error": {
             color: "#d32f2f",
         },
+        "& .MuiInputBase-input": {
+            color: "#111111",
+        },
+        "& .MuiFormHelperText-root": {
+            color: "#777777",
+        },
     };
+
+    const showPopup = submitState === "success" || submitState === "error";
 
     return (
         <Dialog
@@ -199,8 +207,8 @@ export default function EnquireNowModal({
             maxWidth="lg"
             fullWidth
         >
-            <DialogContent className="relative p-0">
-                <Box className="grid grid-cols-1 md:grid-cols-2">
+            <DialogContent className="relative p-0 overflow-hidden">
+                <Box className="relative grid grid-cols-1 md:grid-cols-2">
                     {/* Left Branding Panel */}
                     <Box className="hidden md:flex flex-col justify-between bg-[#111111] text-white p-10">
                         <Box>
@@ -259,87 +267,122 @@ export default function EnquireNowModal({
                             </Typography>
                         </Box>
 
-                        {submitState === "success" ? (
-                            <Box className="mt-8 rounded-3xl border border-green-200 bg-green-50 px-6 py-8 text-center">
-                                <Typography className="!text-2xl !font-semibold !text-green-800 !mb-2">
-                                    Request sent successfully
+                        <Box className="grid grid-cols-1 gap-3">
+                            <TextField
+                                label="Full Name *"
+                                value={form.fullName}
+                                onChange={handleChange("fullName")}
+                                error={!!errors.fullName}
+                                helperText={errors.fullName}
+                                fullWidth
+                                size="small"
+                                sx={textFieldSx}
+                            />
+
+                            <TextField
+                                label="Email Address *"
+                                value={form.email}
+                                onChange={handleChange("email")}
+                                error={!!errors.email}
+                                helperText={errors.email}
+                                fullWidth
+                                size="small"
+                                sx={textFieldSx}
+                            />
+
+                            <TextField
+                                label="Message"
+                                value={form.message}
+                                onChange={handleChange("message")}
+                                error={!!errors.message}
+                                helperText={errors.message || `${form.message.length}/1000`}
+                                fullWidth
+                                multiline
+                                minRows={3}
+                                size="small"
+                                placeholder="Tell us what you're looking for..."
+                                sx={textFieldSx}
+                            />
+
+                            <Box className="flex flex-col gap-2">
+                                <Typography className="!text-xs !leading-6 !text-[#777] pl-2">
+                                    By submitting this form, you agree to be contacted regarding
+                                    your enquiry.
                                 </Typography>
-                                <Typography className="!text-sm sm:!text-base !text-green-700 !leading-7">
-                                    Thank you. Our team will get in touch with you shortly.
-                                </Typography>
+
+                                <Button
+                                    variant="contained"
+                                    onClick={handleSubmit}
+                                    disabled={loading}
+                                    fullWidth
+                                    className="!rounded-full !bg-[#111111] hover:!bg-[#222222] !py-2"
+                                    sx={{
+                                        color: "#ffffff !important",
+                                        textTransform: "none",
+                                        fontWeight: 500,
+                                        minHeight: 44,
+                                    }}
+                                >
+                                    {loading ? (
+                                        <Box className="flex items-center gap-2">
+                                            <CircularProgress size={18} sx={{ color: "white" }} />
+                                            <span style={{ color: "white" }}>Sending...</span>
+                                        </Box>
+                                    ) : (
+                                        <span style={{ color: "white" }}>Enquire Now</span>
+                                    )}
+                                </Button>
                             </Box>
-                        ) : (
-                            <Box className="grid grid-cols-1 gap-3">
-                                <TextField
-                                    label="Full Name *"
-                                    value={form.fullName}
-                                    onChange={handleChange("fullName")}
-                                    error={!!errors.fullName}
-                                    helperText={errors.fullName}
-                                    fullWidth
-                                    size="small"
-                                    sx={textFieldSx}
-                                />
-
-                                <TextField
-                                    label="Email Address *"
-                                    value={form.email}
-                                    onChange={handleChange("email")}
-                                    error={!!errors.email}
-                                    helperText={errors.email}
-                                    fullWidth
-                                    size="small"
-                                    sx={textFieldSx}
-                                />
-
-                                <TextField
-                                    label="Message"
-                                    value={form.message}
-                                    onChange={handleChange("message")}
-                                    error={!!errors.message}
-                                    helperText={errors.message || `${form.message.length}/1000`}
-                                    fullWidth
-                                    multiline
-                                    minRows={3}
-                                    size="small"
-                                    placeholder="Tell us what you're looking for..."
-                                    sx={textFieldSx}
-                                />
-
-                                {submitState === "error" && (
-                                    <Box className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3">
-                                        <Typography className="!text-sm !text-red-700">
-                                            {serverError}
-                                        </Typography>
-                                    </Box>
-                                )}
-
-                                <Box className="flex flex-col gap-2">
-                                    <Typography className="!text-xs !leading-6 !text-[#777] pl-2">
-                                        By submitting this form, you agree to be contacted regarding
-                                        your enquiry.
-                                    </Typography>
-
-                                    <Button
-                                        variant="contained"
-                                        onClick={handleSubmit}
-                                        disabled={loading}
-                                        fullWidth
-                                        className="text-white !rounded-full py-2 !bg-[#111111] hover:!bg-[#222222]"
-                                    >
-                                        {loading ? (
-                                            <Box className="flex items-center gap-2 text-white">
-                                                <CircularProgress size={18} sx={{ color: "white" }} />
-                                                Sending...
-                                            </Box>
-                                        ) : (
-                                            <Typography className="text-white">Enquire Now</Typography>
-                                        )}
-                                    </Button>
-                                </Box>
-                            </Box>
-                        )}
+                        </Box>
                     </Box>
+
+                    {/* INLINE STATUS POPUP OVERLAY */}
+                    {showPopup && (
+                        <Box
+                            className="absolute inset-0 flex items-center justify-center"
+                            sx={{
+                                backgroundColor: "rgba(0,0,0,0.18)",
+                                zIndex: 20,
+                                backdropFilter: "blur(2px)",
+                            }}
+                        >
+                            <Zoom in={showPopup} timeout={250}>
+                                <Box
+                                    className="rounded-4xl bg-white px-8 py-7 text-center shadow-2xl"
+                                    sx={{
+                                        minWidth: isMobile ? "16rem" : "24rem",
+                                        maxWidth: "90vw",
+                                    }}
+                                >
+                                    {submitState === "success" ? (
+                                        <>
+                                            <CheckCircleRoundedIcon
+                                                sx={{ fontSize: 64, color: "#16a34a", mb: 1.5 }}
+                                            />
+                                            <Typography className="!text-2xl !font-semibold !text-[#111111] !mb-1">
+                                                Enquiry sent
+                                            </Typography>
+                                            <Typography className="!text-sm !text-[#666]">
+                                                Our team will get in touch with you shortly.
+                                            </Typography>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <CancelRoundedIcon
+                                                sx={{ fontSize: 64, color: "#dc2626", mb: 1.5 }}
+                                            />
+                                            <Typography className="!text-2xl !font-semibold !text-[#111111] !mb-1">
+                                                Try again
+                                            </Typography>
+                                            <Typography className="!text-sm !text-[#666]">
+                                                {serverError || "Try again after sometime"}
+                                            </Typography>
+                                        </>
+                                    )}
+                                </Box>
+                            </Zoom>
+                        </Box>
+                    )}
                 </Box>
             </DialogContent>
         </Dialog>
