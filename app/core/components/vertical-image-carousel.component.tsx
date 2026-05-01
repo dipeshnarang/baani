@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface VerticalImageMarqueeProps {
@@ -21,7 +22,13 @@ export default function VerticalImageMarquee({
         }}
       >
         {loopImages.map((src, index) => (
-          <Box key={index} className="h-90 w-full overflow-hidden rounded-2xl">
+          <Box
+            key={index}
+            component={motion.div}
+            whileHover={{ scale: 0.985 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="h-90 w-full overflow-hidden rounded-2xl"
+          >
             <Image
               src={src}
               alt={`l-${index}`}

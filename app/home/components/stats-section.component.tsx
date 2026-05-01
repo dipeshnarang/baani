@@ -2,7 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import { STATS_SECTION } from "@/home/constants/home-carousel.constant";
+import {
+  MotionReveal,
+  StaggerReveal,
+  staggerItem,
+} from "@/core/components/motion-reveal.component";
 
 const COUNT_DURATION = 2000;
 
@@ -133,7 +139,11 @@ export default function StatsSection() {
       className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-16 bg-white"
     >
       {/* ---------- TEXT ---------- */}
-      <Box className="flex flex-col gap-8 items-center text-center">
+      <MotionReveal
+        className="flex flex-col gap-8 items-center text-center"
+        direction="up"
+        amount={0.35}
+      >
         <Box className="">
           {renderAnimatedText(
             STATS_SECTION.header,
@@ -151,15 +161,22 @@ export default function StatsSection() {
             1 // DESCRIPTION AFTER HEADER
           )}
         </Box>
-      </Box>
+      </MotionReveal>
 
       {/* ---------- STATS ---------- */}
-      <Box
+      <StaggerReveal
         ref={statsRef}
         className="grid grid-cols-2 gap-x-16 gap-y-20 bg-white"
+        delay={0.1}
+        stagger={0.16}
       >
         {STATS_SECTION.stats.map((stat, index) => (
-          <Box key={index} className="flex flex-col items-center">
+          <Box
+            key={index}
+            component={motion.div}
+            variants={staggerItem}
+            className="flex flex-col items-center"
+          >
             <Box className="mb-6 h-px w-full bg-gray-200" />
 
             <Typography variant="fontUbuntu3xlRegular" color="black">
@@ -171,7 +188,7 @@ export default function StatsSection() {
             </Typography>
           </Box>
         ))}
-      </Box>
+      </StaggerReveal>
     </Box>
   );
 }

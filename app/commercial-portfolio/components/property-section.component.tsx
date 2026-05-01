@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import ExploreCard from "@/core/components/explore-card.component";
+import { MotionReveal } from "@/core/components/motion-reveal.component";
 
 interface PropertyGridSectionProps {
   items: {
@@ -22,7 +23,10 @@ export default function PropertyGridSection({
   const columns = isXL ? 2 : 2;
 
   return (
-    <Box className="mx-auto max-w-7xl px-4 md:px-32 py-8 md:py-20">
+    <MotionReveal
+      className="mx-auto max-w-7xl px-4 md:px-32 py-8 md:py-20"
+      amount={0.12}
+    >
       <Box className="flex flex-col gap-8 md:flex-row md:gap-8 xl:gap-8">
         {Array.from({ length: columns }).map((_, colIndex) => (
           <Box
@@ -41,6 +45,6 @@ export default function PropertyGridSection({
           </Box>
         ))}
       </Box>
-    </Box>
+    </MotionReveal>
   );
 }

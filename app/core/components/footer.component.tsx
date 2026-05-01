@@ -7,6 +7,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { FOOTER_CONTENT } from "../constants/core.constant";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { MotionReveal } from "./motion-reveal.component";
 
 export default function Footer() {
   const theme = useTheme();
@@ -25,15 +26,7 @@ export default function Footer() {
 
   return (
     <Box className="bg-white" sx={{ border: "1px solid white" }}>
-      <Box
-        className="bg-black px-4 py-10 m-2.5 rounded-3xl"
-        sx={{
-          backgroundImage: "url(/images/footer.png)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
+      <MotionReveal className="bg-black px-4 py-10 m-2.5 rounded-3xl bg-[url('/images/footer.png')] bg-cover bg-center bg-no-repeat">
         <Box className="flex justify-center">
           <Box
             className={
@@ -114,7 +107,7 @@ export default function Footer() {
             height={100}
           />
         </Box>
-      </Box>
+      </MotionReveal>
     </Box>
   );
 }

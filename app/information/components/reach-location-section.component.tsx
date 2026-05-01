@@ -4,6 +4,7 @@ import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import LocationMap from "./location-map.component";
 import { ContainedButton } from "@/core/styled/button.styled";
+import { MotionReveal } from "@/core/components/motion-reveal.component";
 
 interface Location {
   title: string;
@@ -27,11 +28,11 @@ export default function HowToReachSection({
 
   return (
     <Box className="mx-auto items-center px-6 py-24 bg-white">
-      <Box className="mb-12">
+      <MotionReveal className="mb-12" amount={0.35}>
         <Typography variant="h1" className="mb-30 text-center italic text-black">
           How to reach?
         </Typography>
-      </Box>
+      </MotionReveal>
 
       <Box
         className={
@@ -40,11 +41,20 @@ export default function HowToReachSection({
             : "flex flex-row gap-12 justify-center"
         }
       >
-        <Box className={isMobile ? "h-[24rem]" : "h-[24rem] w-[52rem]"}>
+        <MotionReveal
+          className={isMobile ? "h-[24rem]" : "h-[24rem] w-[52rem]"}
+          direction="right"
+          amount={0.25}
+        >
           <LocationMap coordinates={coordinates} />
-        </Box>
+        </MotionReveal>
 
-        <Box className="flex flex-col justify-center gap-4">
+        <MotionReveal
+          className="flex flex-col justify-center gap-4"
+          direction="left"
+          amount={0.25}
+          delay={0.12}
+        >
           <Box className="flex flex-col gap-2">
             <Typography variant="locationHeader" className="text-black">{title}</Typography>
             <Typography variant="locationAddress" className="text-gray-600">{address}</Typography>
@@ -61,7 +71,7 @@ export default function HowToReachSection({
           >
             Get Directions
           </ContainedButton>
-        </Box>
+        </MotionReveal>
       </Box>
     </Box>
   );

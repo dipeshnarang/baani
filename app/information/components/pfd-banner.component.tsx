@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import PdfModal from "./pdf-section.component";
+import { MotionReveal } from "@/core/components/motion-reveal.component";
 
 interface Document {
     title: string;
@@ -21,7 +22,7 @@ export default function SustainableBannerWithModal({ documents }: Props) {
         <Box className='bg-white pb-8'>
             <Box className='bg-white'>
                 {/* BANNER */}
-                <Box
+                <MotionReveal
                     className="
           relative
           max-w-7xl mx-auto
@@ -31,10 +32,8 @@ export default function SustainableBannerWithModal({ documents }: Props) {
           flex items-center justify-center
           overflow-hidden
         "
-                    sx={{
-                        background: "#DFFFEF",
-                    }}
                 >
+                    <Box className="absolute inset-0 bg-[#DFFFEF]" />
                     {/* LEFT TREE */}
                     <Box className="absolute left-4 bottom-0 opacity-80">
                         <Image
@@ -81,7 +80,7 @@ export default function SustainableBannerWithModal({ documents }: Props) {
                             Know more
                         </Typography>
                     </Box>
-                </Box>
+                </MotionReveal>
 
                 <PdfModal
                     open={open}

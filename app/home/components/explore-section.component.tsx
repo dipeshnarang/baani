@@ -12,6 +12,10 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ExploreCard from "../../core/components/explore-card.component";
 import { EXPLORE_SECTION } from "../constants/home-carousel.constant";
+import {
+  MotionReveal,
+  StaggerReveal,
+} from "@/core/components/motion-reveal.component";
 
 export default function ExploreSection() {
   const theme = useTheme();
@@ -60,14 +64,14 @@ export default function ExploreSection() {
       className="mx-auto px-6 pb-14 bg-white scroll-mt-24"
       id="explore-section"
     >
-      <Box className="mb-12 text-center flex flex-col">
+      <MotionReveal className="mb-12 text-center flex flex-col" amount={0.35}>
         <Typography variant="fontDmSansXlMedium" color="black">
           {EXPLORE_SECTION.header}
         </Typography>
         <Typography variant="fontDmSansXlMedium" className="italic text-yellow-500">
           {EXPLORE_SECTION.subHeader}
         </Typography>
-      </Box>
+      </MotionReveal>
       <Box className="relative flex ">
         {hasOverflow && (
           <Box className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-2">
@@ -89,18 +93,16 @@ export default function ExploreSection() {
           </Box>
         )}
 
-        <Box
+        <StaggerReveal
           ref={scrollRef}
-          className={`flex gap-10 overflow-x-scroll py-2 scroll-smooth scrollbar-hide w-full ${isMobile ? "" : "justify-center"}`}
-          sx={{
-            scrollbarWidth: "none",
-            "&::-webkit-scrollbar": { display: "none" },
-          }}
+          className={`flex gap-10 overflow-x-scroll px-1 py-8 scroll-smooth scrollbar-hide w-full ${isMobile ? "" : "justify-center"}`}
+          stagger={0.1}
+          style={{ scrollbarWidth: "none" }}
         >
           {EXPLORE_SECTION.items.map((item, index) => (
             <ExploreCard key={index} {...item} />
           ))}
-        </Box>
+        </StaggerReveal>
       </Box>
     </Box>
   );

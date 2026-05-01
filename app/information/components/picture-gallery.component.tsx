@@ -3,6 +3,12 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  MotionReveal,
+  StaggerReveal,
+  staggerItem,
+} from "@/core/components/motion-reveal.component";
 
 interface PictureGallerySectionProps {
   images: string[];
@@ -47,8 +53,9 @@ export default function PictureGallerySection({
         </Typography>
       </Box> */}
 
-      <Box
+      <MotionReveal
         className="relative pt-6 mb-16 flex flex-col items-center text-center"
+        amount={0.35}
       >
         {/* Top Image */}
         <Image
@@ -85,22 +92,26 @@ export default function PictureGallerySection({
         <Typography variant="galleryHeader" className="italic text-yellow-500">
           Picture Gallery
         </Typography>
-      </Box>
+      </MotionReveal>
 
       {/* GALLERY */}
       <Box ref={containerRef} className="relative overflow-hidden">
         {/* STATIC MODE */}
         {!hasOverflow && (
-          <Box ref={trackRef} className="flex justify-center gap-8">
+          <StaggerReveal
+            ref={trackRef}
+            className="flex justify-center gap-8"
+            stagger={0.1}
+          >
             {images.map((src, index) => (
               <GalleryCard key={index} src={src} />
             ))}
-          </Box>
+          </StaggerReveal>
         )}
 
         {/* MARQUEE MODE */}
         {hasOverflow && (
-          <Box className="flex w-max picture-gallery-marquee">
+          <MotionReveal className="flex w-max picture-gallery-marquee" amount={0.1}>
             <Box ref={trackRef} className="flex gap-8 pr-8">
               {images.map((src, index) => (
                 <GalleryCard key={`a-${index}`} src={src} />
@@ -112,7 +123,7 @@ export default function PictureGallerySection({
                 <GalleryCard key={`b-${index}`} src={src} />
               ))}
             </Box>
-          </Box>
+          </MotionReveal>
         )}
 
         {/* EDGE FADES */}
@@ -131,6 +142,10 @@ export default function PictureGallerySection({
 function GalleryCard({ src }: { src: string }) {
   return (
     <Box
+      component={motion.div}
+      variants={staggerItem}
+      whileHover={{ scale: 0.965 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="
         h-[22rem] w-[22rem]
         flex-shrink-0

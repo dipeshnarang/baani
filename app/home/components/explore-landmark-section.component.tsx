@@ -5,12 +5,18 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import VerticalImageMarquee from "@/core/components/vertical-image-carousel.component";
 import { EXPLORE_LANDMARK } from "../constants/home-carousel.constant";
 import { ContainedButton } from "@/core/styled/button.styled";
+import {
+  MotionReveal,
+  StaggerReveal,
+  staggerItem,
+} from "@/core/components/motion-reveal.component";
+import { motion } from "framer-motion";
 
 export default function IconicLandmarksSection() {
   return (
     <Box className="mx-auto px-4 md:px-24 py-10 bg-[#FAFAFA]">
       {/* Header */}
-      <Box className="mb-14 text-center flex flex-col">
+      <MotionReveal className="mb-14 text-center flex flex-col" amount={0.35}>
         <Typography variant="fontDmSerifXlRegular" className="font-serif italic text-yellow-500">
           {EXPLORE_LANDMARK.header[0]}{" "}
           <span className="text-black">{EXPLORE_LANDMARK.header[1]}</span>
@@ -18,14 +24,16 @@ export default function IconicLandmarksSection() {
         <Typography variant="fontDmSerifXlRegular" className="font-semibold text-black">
           {EXPLORE_LANDMARK.subheader[0]}
         </Typography>
-      </Box>
+      </MotionReveal>
 
       {/* Content */}
       <Box className="grid grid-cols-1 gap-12 md:grid-cols-2">
         {/* Left – Scrolling Images */}
-        <VerticalImageMarquee images={EXPLORE_LANDMARK.imageList} />
+        <MotionReveal direction="right" amount={0.25}>
+          <VerticalImageMarquee images={EXPLORE_LANDMARK.imageList} />
+        </MotionReveal>
 
-        <Box className="md:p-8">
+        <MotionReveal className="md:p-8" direction="left" amount={0.25}>
           <Box className="flex flex-col gap-6 rounded-3xl bg-white p-10 shadow-sm">
             <Box className="flex flex-col gap-4">
               <Typography
@@ -41,22 +49,29 @@ export default function IconicLandmarksSection() {
               </Typography>
             </Box>
             <Box>
-              <ul className="mb-8 space-y-3 text-sm text-gray-700">
+              <StaggerReveal
+                className="mb-8 space-y-3 text-sm text-gray-700"
+                stagger={0.08}
+              >
                 {EXPLORE_LANDMARK.pointers.map((pointer, index) => {
                   return (
-                    <li className="flex items-center gap-2" key={index}>
+                    <motion.div
+                      className="flex items-center gap-2"
+                      key={index}
+                      variants={staggerItem}
+                    >
                       {pointer.icon}
                       {pointer.text}
-                    </li>
+                    </motion.div>
                   );
                 })}
-              </ul>
+              </StaggerReveal>
             </Box>
             <ContainedButton variant="contained" endIcon={<ArrowOutwardIcon />} href="/commercial-portfolio">
               Explore commercial portfolio
             </ContainedButton>
           </Box>
-        </Box>
+        </MotionReveal>
       </Box>
     </Box>
   );

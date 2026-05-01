@@ -8,6 +8,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface ProjectInfoSectionProps {
@@ -56,6 +57,7 @@ export default function ProjectInfoSection({
 
   const [expanded, setExpanded] = useState(false);
   const [showReadMore, setShowReadMore] = useState(false);
+  const [collapsedMaxHeight, setCollapsedMaxHeight] = useState<string>("none");
 
   /* ---------- Desktop overflow detection ---------- */
   useEffect(() => {
@@ -64,8 +66,11 @@ export default function ProjectInfoSection({
 
     const imageHeight = imageRef.current.offsetHeight;
     const textHeight = textRef.current.scrollHeight;
+    const lineHeightPx = INFO_TEXT_FONT_SIZE * LINE_HEIGHT;
+    const fullLines = Math.floor((imageHeight - 128) / lineHeightPx);
 
     setShowReadMore(textHeight > imageHeight);
+    setCollapsedMaxHeight(`${fullLines * lineHeightPx}px`);
   }, [description, isMobile]);
 
   /* ================= MOBILE LAYOUT ================= */
@@ -76,6 +81,10 @@ export default function ProjectInfoSection({
       <Box className="bg-black px-6 pt-32 pb-10 text-white">
         {/* Image */}
         <Box
+          component={motion.div}
+          initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="overflow-hidden rounded-3xl mb-6"
           sx={{ aspectRatio: "107 / 120" }}
         >
@@ -83,22 +92,29 @@ export default function ProjectInfoSection({
         </Box>
 
         {/* Content */}
-        <img
-          src={logo}
-          alt={`${title} logo`}
-          className="h-12 mb-4 object-contain brightness-0 invert"
-        />
-
-        <Typography variant="h1" className="mb-4 font-serif">
-          {title}
-        </Typography>
-
-        <Typography
-          variant="infoText"
-          className="text-gray-300 leading-relaxed"
+        <Box
+          component={motion.div}
+          initial={{ opacity: 0, y: 26 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {expanded || !truncated ? description : `${text}…`}
-        </Typography>
+          <img
+            src={logo}
+            alt={`${title} logo`}
+            className="h-12 mb-4 object-contain brightness-0 invert"
+          />
+
+          <Typography variant="h1" className="mb-4 font-serif">
+            {title}
+          </Typography>
+
+          <Typography
+            variant="infoText"
+            className="text-gray-300 leading-relaxed"
+          >
+            {expanded || !truncated ? description : `${text}…`}
+          </Typography>
+        </Box>
 
         {/* Actions */}
         <Box className="mt-4">
@@ -131,6 +147,11 @@ export default function ProjectInfoSection({
         {/* ===== FLOATING IMAGE ===== */}
         <Box
           ref={imageRef}
+          component={motion.div}
+          initial={{ opacity: 0, x: -52, scale: 0.96, filter: "blur(12px)" }}
+          whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="float-left overflow-hidden rounded-3xl"
           sx={{
             ...IMAGE_CONTAINER_SX,
@@ -144,16 +165,13 @@ export default function ProjectInfoSection({
         {/* ===== TEXT FLOW ===== */}
         <Box
           ref={textRef}
+          component={motion.div}
+          initial={{ opacity: 0, y: 34 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ delay: 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           sx={{
-            maxHeight:
-              !expanded && imageRef.current
-                ? (() => {
-                    const imageHeight = imageRef.current.offsetHeight - 128; // 8rem
-                    const lineHeightPx = INFO_TEXT_FONT_SIZE * LINE_HEIGHT;
-                    const fullLines = Math.floor(imageHeight / lineHeightPx);
-                    return `${fullLines * lineHeightPx}px`;
-                  })()
-                : "none",
+            maxHeight: !expanded ? collapsedMaxHeight : "none",
             overflow: !expanded ? "hidden" : "visible",
           }}
         >

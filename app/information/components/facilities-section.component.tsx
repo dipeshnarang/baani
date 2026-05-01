@@ -1,6 +1,12 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
+import {
+  MotionReveal,
+  StaggerReveal,
+  staggerItem,
+} from "@/core/components/motion-reveal.component";
 
 interface Facilities {
   icon: string;
@@ -19,7 +25,7 @@ export default function FacilitiesSection({
     <Box className="bg-[#F2F2F2] ">
       <Box className='max-w-7xl mx-auto px-6 py-24'>
         {/* Header */}
-        <Box className="mb-12 text-center flex flex-col">
+        <MotionReveal className="mb-12 text-center flex flex-col" amount={0.35}>
           <Typography variant="galleryHeader" className="text-black">
             Property Packed with
           </Typography>
@@ -29,12 +35,16 @@ export default function FacilitiesSection({
           >
             Facilities
           </Typography>
-        </Box>
+        </MotionReveal>
 
         {/* Facilities Grid */}
-        <Box className="flex flex-wrap justify-center gap-x-12 gap-y-20">
+        <StaggerReveal className="flex flex-wrap justify-center gap-x-12 gap-y-20">
           {facilities.map((item, index) => (
             <Box
+              component={motion.div}
+              variants={staggerItem}
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               key={index}
               className="flex flex-col items-center text-center 
                  w-full sm:w-[45%] md:w-[30%]"
@@ -61,7 +71,7 @@ export default function FacilitiesSection({
               </Box>
             </Box>
           ))}
-        </Box>
+        </StaggerReveal>
       </Box>
     </Box>
   );

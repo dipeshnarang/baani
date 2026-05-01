@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { homeCarouselSlides } from "../constants/home-carousel.constant";
 import CarouselImageComponent from "./carousel-image.component";
 import CarouselTextOverlayComponent from "./carousel-text-overlay.component";
@@ -11,6 +12,14 @@ export default function HeroCarousel() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [current, setCurrent] = useState(0);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.25]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -21,36 +30,67 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <Box className="p-2.5">
-      <Box className="relative h-[80vh] w-full overflow-hidden rounded-[1.25rem]">
-        {homeCarouselSlides.map((slide, index) => (
-          <Box
-            key={index}
-            className="absolute inset-0 transition-opacity duration-800"
-            sx={{
-              opacity: index === current ? 1 : 0,
-            }}
+    <Box className="p-2.5" ref={heroRef}>
+      <Box className="relative h-[80vh] w-full overflow-hidden rounded-[1.25rem] bg-black">
+        <AnimatePresence mode="sync">
+          {homeCarouselSlides.map(
+            (slide, index) =>
+              index === current && (
+                <motion.div
+                  key={index}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0, scale: 1.08 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.03 }}
+                  transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.div
+                    className="absolute inset-0"
+                    style={{ scale: heroScale, y: heroY }}
+                  >
+                    <CarouselImageComponent
+                      src={slide.image}
+                      alt={slide.title.map((item) => item.text).join(" ")}
+                      priority={index === 0}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/10"
+                    style={{ opacity: overlayOpacity }}
+                  />
+                </motion.div>
+              )
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -18, filter: "blur(8px)" }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <CarouselImageComponent
-              src={slide.image}
-              alt={slide.title.join(" ")}
-              priority={index === 0}
+            <CarouselTextOverlayComponent
+              title={homeCarouselSlides[current].title}
+              subtitle={homeCarouselSlides[current].subtitle}
             />
+          </motion.div>
+        </AnimatePresence>
 
-            <Box className="absolute inset-0 bg-gradient-to-r from-black/55 to-black/15" />
-          </Box>
-        ))}
-
-        <CarouselTextOverlayComponent
-          title={homeCarouselSlides[current].title}
-          subtitle={homeCarouselSlides[current].subtitle}
-        />
         {!isMobile && (
-          <CarouselIndicator
-            currentIndex={current}
-            total={homeCarouselSlides.length}
-            onChange={setCurrent}
-          />
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <CarouselIndicator
+              currentIndex={current}
+              total={homeCarouselSlides.length}
+              onChange={setCurrent}
+            />
+          </motion.div>
         )}
       </Box>
     </Box>

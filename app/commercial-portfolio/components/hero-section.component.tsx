@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface HeroBusinessSectionProps {
@@ -26,6 +27,13 @@ export default function HeroBusinessSection({
   /* ---------- Refs ---------- */
   const desktopImageRef = useRef<HTMLImageElement | null>(null);
   const mobileImageRef = useRef<HTMLImageElement | null>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
 
   /* =========================================================
      MOBILE: Smooth parallax using RAF (NO React state)
@@ -86,6 +94,7 @@ export default function HeroBusinessSection({
      ========================================================= */
   return (
     <Box
+      ref={sectionRef}
       className="relative w-full overflow-hidden rounded-[1.25rem]"
       sx={{
         height: { xs: "78vh", md: "80vh" },
@@ -99,7 +108,12 @@ export default function HeroBusinessSection({
 
       {/* TEXT — collision-aligned */}
       <Box
+        component={motion.div}
         className="absolute z-20 w-full text-center px-6"
+        initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        style={{ y: titleY, opacity: titleOpacity }}
         sx={{
           top: {
             xs: "clamp(16vh, 20vh, 24vh)",
@@ -139,11 +153,14 @@ export default function HeroBusinessSection({
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <img
+        <motion.img
           ref={isMobile ? mobileImageRef : desktopImageRef}
           src={buildingImage}
           alt="Building"
           className="h-full w-full object-cover"
+          initial={{ scale: 1.14, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
           style={{
             transform: isMobile
               ? "translate3d(0,0,0)"
