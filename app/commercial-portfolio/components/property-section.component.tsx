@@ -23,10 +23,7 @@ export default function PropertyGridSection({
   const columns = isXL ? 2 : 2;
 
   return (
-    <MotionReveal
-      className="mx-auto max-w-7xl px-4 md:px-32 py-8 md:py-20"
-      amount={0.12}
-    >
+    <Box className="mx-auto max-w-7xl overflow-hidden px-4 py-8 md:px-32 md:py-20">
       <Box className="flex flex-col gap-8 md:flex-row md:gap-8 xl:gap-8">
         {Array.from({ length: columns }).map((_, colIndex) => (
           <Box
@@ -40,11 +37,20 @@ export default function PropertyGridSection({
             {items
               .filter((_, i) => i % columns === colIndex)
               .map((item, index) => (
-                <ExploreCard key={`${colIndex}-${index}`} {...item} />
+                <MotionReveal
+                  key={`${colIndex}-${index}`}
+                  direction={colIndex === 0 ? "right" : "left"}
+                  distance={140}
+                  duration={0.9}
+                  delay={index * 0.08}
+                  amount={0.2}
+                >
+                  <ExploreCard {...item} />
+                </MotionReveal>
               ))}
           </Box>
         ))}
       </Box>
-    </MotionReveal>
+    </Box>
   );
 }

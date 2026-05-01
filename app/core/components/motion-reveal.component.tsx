@@ -11,6 +11,7 @@ interface RevealProps {
   delay?: number;
   duration?: number;
   direction?: Direction;
+  distance?: number;
   amount?: number;
   once?: boolean;
 }
@@ -25,19 +26,19 @@ interface StaggerRevealProps {
   once?: boolean;
 }
 
-const offsetByDirection = (direction: Direction) => {
+const offsetByDirection = (direction: Direction, distance: number) => {
   switch (direction) {
     case "down":
-      return { x: 0, y: -34 };
+      return { x: 0, y: -distance };
     case "left":
-      return { x: 42, y: 0 };
+      return { x: distance, y: 0 };
     case "right":
-      return { x: -42, y: 0 };
+      return { x: -distance, y: 0 };
     case "none":
       return { x: 0, y: 0 };
     case "up":
     default:
-      return { x: 0, y: 42 };
+      return { x: 0, y: distance };
   }
 };
 
@@ -47,11 +48,14 @@ export function MotionReveal({
   delay = 0,
   duration = 0.8,
   direction = "up",
+  distance = 42,
   amount = 0.24,
   once = true,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
-  const offset = reduceMotion ? { x: 0, y: 0 } : offsetByDirection(direction);
+  const offset = reduceMotion
+    ? { x: 0, y: 0 }
+    : offsetByDirection(direction, distance);
 
   return (
     <motion.div
