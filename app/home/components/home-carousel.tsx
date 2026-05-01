@@ -64,23 +64,21 @@ export default function HeroCarousel() {
           )}
         </AnimatePresence>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -18, filter: "blur(8px)" }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <CarouselTextOverlayComponent
-              title={homeCarouselSlides[current].title}
-              subtitle={homeCarouselSlides[current].subtitle}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-20"
+          initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <CarouselTextOverlayComponent
+            title={homeCarouselSlides[current].title}
+            subtitle={homeCarouselSlides[current].subtitle}
+          />
+        </motion.div>
 
         {!isMobile && (
           <motion.div
+            className="absolute inset-0 z-30"
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
