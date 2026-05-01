@@ -7,7 +7,12 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { FOOTER_CONTENT } from "../constants/core.constant";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { MotionReveal } from "./motion-reveal.component";
+import {
+  MotionReveal,
+  StaggerReveal,
+  staggerItem,
+} from "./motion-reveal.component";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const theme = useTheme();
@@ -27,8 +32,10 @@ export default function Footer() {
   return (
     <Box className="bg-white" sx={{ border: "1px solid white" }}>
       <MotionReveal className="bg-black px-4 py-10 m-2.5 rounded-3xl bg-[url('/images/footer.png')] bg-cover bg-center bg-no-repeat">
-        <Box className="flex justify-center">
+        <StaggerReveal className="flex justify-center" stagger={0.12}>
           <Box
+            component={motion.div}
+            variants={staggerItem}
             className={
               isMobile
                 ? "flex flex-col gap-8"
@@ -36,7 +43,7 @@ export default function Footer() {
             }
           >
             {/* LEFT */}
-            <Box className="max-w-md">
+            <Box component={motion.div} variants={staggerItem} className="max-w-md">
               <Typography variant="h1" className="italic text-white">
                 {FOOTER_CONTENT.title[0]}
                 <br />
@@ -45,7 +52,7 @@ export default function Footer() {
             </Box>
 
             {/* QUICK LINKS */}
-            <Box>
+            <Box component={motion.div} variants={staggerItem}>
               <Typography variant='fontUbuntuBaseMedium' className="text-white flex gap-1 pb-4">
                 {FOOTER_CONTENT.quickLinks.header[0]}{" "}
                 <span className="text-yellow-500">
@@ -73,7 +80,11 @@ export default function Footer() {
             </Box>
 
             {/* CONTACT */}
-            <Box className="space-y-4 text-sm text-gray-300">
+            <Box
+              component={motion.div}
+              variants={staggerItem}
+              className="space-y-4 text-sm text-gray-300"
+            >
               <Box className="flex items-start gap-3">
                 <LocationOnIcon className="text-yellow-500" fontSize="small" />
                 <Typography>
@@ -96,10 +107,17 @@ export default function Footer() {
               </Box>
             </Box>
           </Box>
-        </Box>
+        </StaggerReveal>
 
         {/* LOGO */}
-        <Box className="w-full justify-center flex mt-16">
+        <Box
+          component={motion.div}
+          initial={{ opacity: 0, y: 34, scale: 0.92, filter: "blur(12px)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ delay: 0.25, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full justify-center flex mt-16"
+        >
           <Image
             src={"/images/baani-logo.png"}
             alt="Baani Logo"
