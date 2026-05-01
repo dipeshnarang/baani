@@ -17,10 +17,32 @@ export default function PropertyGridSection({
   items,
 }: PropertyGridSectionProps) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isXL = useMediaQuery(theme.breakpoints.up("xl"));
 
   // decide number of columns
   const columns = isXL ? 2 : 2;
+
+  if (isMobile) {
+    return (
+      <Box className="mx-auto max-w-7xl overflow-hidden px-4 py-8">
+        <Box className="flex flex-col gap-8">
+          {items.map((item, index) => (
+            <MotionReveal
+              key={item.link}
+              direction="up"
+              distance={56}
+              duration={0.8}
+              delay={index * 0.05}
+              amount={0.18}
+            >
+              <ExploreCard {...item} />
+            </MotionReveal>
+          ))}
+        </Box>
+      </Box>
+    );
+  }
 
   return (
     <Box className="mx-auto max-w-7xl overflow-hidden px-4 py-8 md:px-32 md:py-20">
